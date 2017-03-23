@@ -1,0 +1,84 @@
+\section{Common element}
+
+The definitions commonly used in an arbitrary element are shown below.
+
+\subsection{The data type name identifier}
+\label{sec:Thedatatypenameidentifier}
+
+In the program, the data type is identified by the data name.
+The name is one of the basic data type names or the derived data type names below.
+\newline
+
+\begin{XcodeMLDataTypeNames}
+\XcodeMLDataTypeName{Fint}{integer type}
+\XcodeMLDataTypeName{Freal}{real type}
+\XcodeMLDataTypeName{Fcomplex}{complex type}
+\XcodeMLDataTypeName{Flogical}{logical type}
+\XcodeMLDataTypeName{Fcharacter}{character type}
+\XcodeMLDataTypeName{Fvoid}{void type; represents the type of the return value of the subroutine.}
+\XcodeMLDataTypeName{others}
+{derived type; expressed by an arbitrary string consisting of alphabets and numbers
+ different from the names of the basic data types. It must be uniq int the program.}
+\end{XcodeMLDataTypeNames}
+
+
+\subsection{Common attributes of the definition / declaration / statement element}
+\label{sec:Commonattributesofdefinition}
+
+Every definition, declaration and statement elements may have the following attributes.
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{lineno}{text}
+{Specifies the line number in the Fortran program.}{R}
+\XcodeMLAttrDef{file}{text}
+{Specifies the source code name of the Fortran program.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt lValueModel} model}
+\label{sec:lValueModel}
+
+The {\tt lValueModel model} is commonly used by the elements which refer to the variable as the lvalue.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(Var | FarrayRef | FcharacterRef | FmemberRef | FcoArrayRef)
+%}
+\XcodeMLContentsModel{ (Var | FarrayRef | FcharacterRef | FmemberRef | FcoArrayRef) }
+
+\subsubsection*{Element}
+
+Refer to the specification of each element.
+
+
+\subsection{ {\tt exprModel} model}
+\label{sec:exprModel}
+
+The {\tt exprModel model} is commonly used by the elements which refer to the expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FintConstant | FrealConstant | FcomplexConstant | FcharacterConstant | FlogicalConstant | FarrayConstructor | FstructConstructor | Var | FarrayRef | FcharacterRef | FmemberRef | FcoArrayRef | varRef | functionCall | plusExpr | minusExpr | mulExpr | divExpr | FpowerExpr | FconcatExpr | logEQExpr | logNEQExpr | logGEExpr | logGTExpr | logLEExpr | logLTExpr | logAndExpr | logOrExpr | logEQVExpr | logNEQVExpr | unaryMinusExpr | logNotExpr | userBinaryExpr | userUnaryExpr | FdoLoop)
+%}
+\XcodeMLContentsModel{ (FintConstant | FrealConstant | FcomplexConstant | FcharacterConstant | FlogicalConstant | FarrayConstructor | FstructConstructor | Var | FarrayRef | FcharacterRef | FmemberRef | FcoArrayRef | varRef | functionCall | plusExpr | minusExpr | mulExpr | divExpr | FpowerExpr | FconcatExpr | logEQExpr | logNEQExpr | logGEExpr | logGTExpr | logLEExpr | logLTExpr | logAndExpr | logOrExpr | logEQVExpr | logNEQVExpr | unaryMinusExpr | logNotExpr | userBinaryExpr | userUnaryExpr | FdoLoop) }
+
+\subsubsection*{Element}
+
+Refer to the specification of each element.
+
+
+\subsection{ {\tt statementModel} model}
+
+The {\tt statementModel} model is commonly used by the elements which refer to the statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FassignStatement | exprStatement | FpointerAssignStatement | FifStatement | FdoStatement | FdoWhileStatement | continueStatement | FcycleStatement | FexitStatement | FreturnStatement | gotoStatement | statementLabel | FselectCaseStatement | FcaseLabel | FwhereStatement | FstopStatement | FreadStatement | FwriteStatement | FprintStatement | FrewindStatement | FendFileStatement | FbackspaceStatement | FopenStatement | FcloseStatement | FinquireStatement | FformatDecl | FdataDecl | FentryDecl | FallocateStatement | FdeallocateStatement | FnullifyStatement | FpragmaStatement | FcontainsStatement | forAllStatement | FdoConcurrentStatement | selectTypeStatement | associateStatement | blockStatement)
+%}
+\XcodeMLContentsModel{ (FassignStatement | exprStatement | FpointerAssignStatement | FifStatement | FdoStatement | FdoWhileStatement | continueStatement | FcycleStatement | FexitStatement | FreturnStatement | gotoStatement | statementLabel | FselectCaseStatement | FcaseLabel | FwhereStatement | FstopStatement | FreadStatement | FwriteStatement | FprintStatement | FrewindStatement | FendFileStatement | FbackspaceStatement | FopenStatement | FcloseStatement | FinquireStatement | FformatDecl | FdataDecl | FentryDecl | FallocateStatement | FdeallocateStatement | FnullifyStatement | FpragmaStatement | FcontainsStatement) }
+
+\subsubsection*{Element}
+
+Refer to the specification of each element.
+
+

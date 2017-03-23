@@ -1,0 +1,470 @@
+\section{Expression element}
+
+This chapter describes the XML elements corresponding to the syntax elements for expressions in Fortran.
+Each element has a {\tt type} element attached, which can be used to extract the data type information of the expression.
+
+\subsection{Constant element}
+
+The elements representing constants are described below.
+
+\subsubsection{ {\tt FintConstant, FrealConstant, FcharacterConstant, FlogicalConstant } element}
+
+The {\tt FintConstant, FrealConstant, FcharacterConstant and FlogicalConstant} element represents a constatnt of the {\tt integer}, {\tt real}, {\tt character} and {\tt logical} type respctively.
+\newline
+
+The contents of the elements are shown below.
+\newline
+
+\begin{XcodeMLElementList}
+\XcodeMLElementFormat{FintConstant}
+{Specifies a constant that has an integer value;
+ a decimal or hexadecimal (starting with 0x) number.}
+\XcodeMLElementFormat{FrealConstant}
+{32bit hexadeciaml(starting with 0x) two numbers representing an IEEE754 floating-point number.}
+\XcodeMLElementFormat{FcharacterConstant}
+{A character string.}
+\XcodeMLElementFormat{FlogicalConstant}
+{{\tt 1}(or {\tt true}) representing true of the logical value, or {\tt 0}(or {\tt false}) represeinting false.}
+\end{XcodeMLElementList}
+
+%\subsubsection*{Contents model}
+%{\tt
+%(\#PCDATA)
+%}
+\XcodeMLContentsModel{ (\#PCDATA) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\XcodeMLAttrDef{kind}{text}
+{Specifies the kind parameter of the type element.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FcomplexContant} element}
+
+The {\tt FcomplexContant} element represents a constant of the {\tt complex} type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FrealConstant, FrealConstant)
+%}
+\XcodeMLContentsModel{ (FrealConstant, FrealConstant) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{FrealConstant}
+{Specifies a couple of a constant of the {\tt Freal} type.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{Array constructor element}
+
+\subsubsection{ {\tt FarrayConstructor} element}
+
+The {\tt FarrayConstructor} element represents an array constructor.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)*
+%}
+\XcodeMLContentsModel{ (exprModel)* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the value of the array element. Refer to "\ref{sec:exprModel} exprModel".}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{Structure constructor element}
+
+\subsubsection{ {\tt Constant} element}
+
+The {\tt FstructConstructor} element represents a structure constructor.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(typeParamValues?, (exprModel)*)
+%}
+\XcodeMLContentsModel{ (typeParamValues?, (exprModel)*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{typeParamValues}
+{Specifies the value of the type parameter.}{O}
+\XcodeMLElementDef{exprModel}
+{Specifies the expressions representing the values of the structure components. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt FstructConstructor} element for the type {\tt S} below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+type S(alen,blen,clen)
+real,length:: alen,blen,clen
+real::a(alen) = 0.0
+real::b(blen) = 0.0
+real::b(clen) = 0.0
+end type
+... = S(100,100,100)(b=1.0,c=2.0)
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<FstructConstructor type="TYPE_ID_OF_S">
+<typeParamValues>
+  <FintConstant type="Fint">100</FintConstant>
+<FintConstant type="Fint">100</FintConstant>
+<FintConstant type="Fint">100</FintConstant>
+  </typeParamValues>
+  <namedValue name="b">
+     <FrealConstant>1.0</FrealConstant>
+  </namedValue>
+  <namedValue name="c">
+     <FrealConstant>2.0</FrealConstant>
+  </namedValue>
+</FstructConstructor>
+\end{XcodeMLFExample}
+
+
+\subsection{Variable reference element}
+
+The elements representing a reference to a variable are described below.
+
+\subsubsection{ {\tt Var} element}
+
+The {\tt Var} element represents a name of the variable.
+Specifies the name of the variable as the content.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(\#PCDATA)
+%}
+\XcodeMLContentsModel{ (\#PCDATA) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\XcodeMLAttrDef{scope}{text}
+{Specifies one of
+\newline
+"{\tt local}" for a local variable,
+\newline
+"{\tt global}" for a global variable,
+\newline
+"{\tt param}" for a dummy argument.
+\newline
+* "{\tt global}" is not used in XcodeML/Fortran, however.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FmemberRef} element}
+
+The {\tt FmemberRef} element represents a reference to a structure component.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varRef)
+%}
+\XcodeMLContentsModel{ (varRef) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the reference to the structure.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\XcodeMLAttrDef{member}{text}
+{Specifies the name of the component.}{R}
+\XcodeMLAttrDef{is\_complex\_part}{bool}
+{{\tt true} if refering to the {\tt complex} type partially. In this case, the member name(the value of the {\tt member} attribute) is either "{\tt RE}" or "{\tt IM}".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FcoArrayRef} element}
+
+The {\tt FcoArrayRef} element represents a reference to a coarray.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varRef, (arrayIndex)+)
+%}
+\XcodeMLContentsModel{ (varRef, (arrayIndex)+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the coindexed named object.}{R}
+\XcodeMLElementDef{arrayIndex}
+{Specifies the image selector.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier corresponding to the referenced coarray in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FarrayRef} element}
+
+The {\tt FarrayRef} element represents a reference to an array section or an array element.
+In the case representing a reference to an array element, specifies all of the index
+elements by the {\tt arrayIndex} element.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varRef, (arrayIndex | indexRange | FarrayConstructor | FarrayRef)*)
+%}
+\XcodeMLContentsModel{ (varRef, (arrayIndex | indexRange | FarrayConstructor | FarrayRef)*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the reference to the array.}{R}
+\XcodeMLElementDef{arrayIndex}
+{Specified if the element list of the array section is expressed by the subscripts.
+ Can be repeated the number of the dimension times together with other elements.}{O}
+\XcodeMLElementDef{indexRange}
+{Specified if the element list of the array section is expressed by the upper and lower bounds.
+ Can be repeated the number of the dimension times together with other elements.}{O}
+\XcodeMLElementDef{FarrayConstructor}
+{Specified if the element list of the array section is expressed by the vector subscript by the array constructor.
+ Can be repeated the number of the dimension times together with other elements.}{O}
+\XcodeMLElementDef{FarrayRef}
+{Specified if the element list of the array section is expressed by the vector subscript by the array section.
+ Can be repeated the number of the dimension times together with other elements.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FcharacterRef} element}
+
+The {\tt FcharacterRef} element represents a reference to a character substring.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varRef, indexRange?)
+%}
+\XcodeMLContentsModel{ (varRef, indexRange?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the reference to the character variable.}{R}
+\XcodeMLElementDef{indexRange}
+{Specifies the element list of the character string by the upper and lower bounds.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt varRef} element}
+
+The {\tt varRef} element represents a reference to a variable.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(Var | FmemberRef | FarrayRef | FcharacterRef | FcoArrayRef)
+%}
+\XcodeMLContentsModel{ (Var | FmemberRef | FarrayRef | FcharacterRef | FcoArrayRef) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{Var}
+{Specifid if the element references the variable.}{R}
+\XcodeMLElementDef{FmemberRef}
+{Specifid if the element references the structure component.}{R}
+\XcodeMLElementDef{FarrayRef}
+{Specifid if the element references the array section of the array.}{R}
+\XcodeMLElementDef{FcharacterRef}
+{Specifid if the element references the character substring of the character string.}{R}
+\XcodeMLElementDef{FcoArrayRef}
+{Specifid if the element references the coarray.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{Function call}
+
+\subsubsection{ {\tt functionCall} element}
+
+The {\tt functionCall} element represents a function / subroutine call.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((name|FmemberRef), arguments?)
+%}
+\XcodeMLContentsModel{ ((name|FmemberRef), arguments?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the function or subroutine.}{R}
+\XcodeMLElementDef{FmemberRef}
+{Specifies the name of the function or subroutine
+ (in the case of the component of the structure or the type bound procedure).}{R}
+\XcodeMLElementDef{arguments}
+{Specifies the expressions of the arguments.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\XcodeMLAttrDef{is\_intrinsic}{bool}
+{Specifies if the intrinsic function / subroutine call.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt arguments} element}
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)*
+%}
+\XcodeMLContentsModel{ (exprModel)* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expressions of the arguments. Refer to "\ref{sec:exprModel} exprModel".}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{Binary operation element}
+
+The elements representing the binary operators are described below.
+\newline
+
+\begin{XcodeMLOperations}
+\XcodeMLOperation{plusExpr}{+}{addition}
+\XcodeMLOperation{minusExpr}{-}{subtraction}
+\XcodeMLOperation{mulExpr}{*}{multiplication}
+\XcodeMLOperation{divExpr}{/}{division}
+\XcodeMLOperation{FpowerExpr}{**}{exponentiation}
+\XcodeMLOperation{FconcatExpr}{//}{concatenation}
+\XcodeMLOperation{logEQExpr}{==
+\newline
+.EQ.}{equal}
+\XcodeMLOperation{logNEQExpr}{/=
+\newline
+.NE.}{not equal}
+\XcodeMLOperation{logGEExpr}{\textgreater=
+\newline
+.GE.}{greater than or equal}
+\XcodeMLOperation{logGTExpr}{\textgreater
+\newline
+.GT.}{greater than}
+\XcodeMLOperation{logLEExpr}{\textless=
+\newline
+.LE.}{less than or equal}
+\XcodeMLOperation{logLTExpr}{\textless
+\newline
+.LT.}{less than}
+\XcodeMLOperation{logAndExpr}{.AND.}{logical intersection}
+\XcodeMLOperation{logOrExpr}{.OR.}{logical union}
+\XcodeMLOperation{logEQVExpr}{.EQV.}{logical equivalence}
+\XcodeMLOperation{logNEQVExpr}{.NEQV.}{logical non-equivalence}
+\XcodeMLOperation{userBinaryExpr}{arbitrary}{depends on the interface.}
+\end{XcodeMLOperations}
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel, exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel, exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the left-hand expression as the first operand, the right-hand expression as the second operand. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{Unary operation element}
+
+The elements representing the unary operators are described below.
+No element is prepared for the unary operator '+' because it is omitted by the canonicalization.
+\newline
+
+\begin{XcodeMLOperations}
+\XcodeMLOperation{unaryMinusExpr}{-}{sign inversion}
+\XcodeMLOperation{logNotExpr}{.NOT.}{logical complement}
+\XcodeMLOperation{userUnaryExpr}{arbitrary}{depends on the interface.}
+\end{XcodeMLOperations}
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the operand expression. Refer to "\ref{sec:lValueModel} lValueModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\end{XcodeMLAttributes}
+
+

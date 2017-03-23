@@ -1,0 +1,619 @@
+\section{Type Table element}
+
+\subsection{ {\tt typeTable} element}
+
+The {\tt typeTable} element defines the data type information for the entire file. The element comprises the data type definition elements. Data type definition elements consists of the following elements:
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FbasicType | FfunctionType | FstructType | FenumType))*
+%}
+\XcodeMLContentsModel{ (FbasicType | FfunctionType | FstructType | FenumType))* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{FbasicType}
+{the basic data type}{O}
+\XcodeMLElementDef{FfunctionType}
+{the function data type}{O}
+\XcodeMLElementDef{FstructType}
+{the derived data type}{O}
+\XcodeMLElementDef{FenumType}
+{the enumeration data type}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt coShape} element}
+
+The {\tt coShape} element defines a coshape of a coarray.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(indexRange+)
+%}
+\XcodeMLContentsModel{ (indexRange+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{indexRange}
+{the lower/upper bound of codimension}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FbasicType} element}
+
+The {\tt FbasicType} element defines a reference to prmitive types or other type definition elements.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(kind?, (len | (arrayIndex | indexRange)+)?, coShape?, typeParamValues?)
+%}
+\XcodeMLContentsModel{ (kind?, (len | (arrayIndex | indexRange)+)?, coShape?, typeParamValues?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{kind}
+{Specifies the kind parameter of the type element.}{O}
+\XcodeMLElementDef{len}
+{Specifies the length of the character string. Can be specified only when the type attribute of the type is Fcharacter.}{O}
+\XcodeMLElementDef{arrayIndex}
+{Specified if the type element is the array type and the size is expressed by the number of the elements. Can be repeated the number of the dimension times together with the {\tt indexRange} element.}{O}
+\XcodeMLElementDef{indexRange}
+{Specified if the type element is the array type and the size is expressed by the upper and lower bounds. Can be repeated the number of the dimension times together with the {\tt arrayIndex} element.}{O}
+\XcodeMLElementDef{coShape}
+{Specifies the coshape of the coarray.}{O}
+\XcodeMLElementDef{typeParamValues}
+{Specifies the type parameter values.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier of the type element in the XcodeML/Fortran.}{R}
+\XcodeMLAttrDef{ref}{text}
+{Specifies the type identifier the type refers in the XcodeML/Fortran.}{O}
+\XcodeMLAttrDef{is\_public}{bool}
+{{\tt true} if the type has the {\tt public} attribute.}{O}
+\XcodeMLAttrDef{is\_private}{bool}
+{{\tt true} if the type has the {\tt private} attribute.}{O}
+\XcodeMLAttrDef{is\_pointer}{bool}
+{{\tt true} if the type has the {\tt pointer} attribute.}{O}
+\XcodeMLAttrDef{is\_target}{bool}
+{{\tt true} if the type has the {\tt target} attribute.}{O}
+\XcodeMLAttrDef{is\_external}{bool}
+{{\tt true} if the type has the {\tt external} attribute.}{O}
+\XcodeMLAttrDef{is\_intrinsic}{bool}
+{{\tt true} if the type has the {\tt intrinsic} attribute.}{O}
+\XcodeMLAttrDef{is\_optional}{bool}
+{{\tt true} if the type has the {\tt optional} attribute.}{O}
+\XcodeMLAttrDef{is\_save}{bool}
+{{\tt true} if the type has the {\tt save} attribute.}{O}
+\XcodeMLAttrDef{is\_parameter}{bool}
+{{\tt true} if the type has the {\tt parameter} attribute.}{O}
+\XcodeMLAttrDef{is\_allocatable}{bool}
+{{\tt true} if the type has the {\tt allocatable} attribute.}{O}
+\XcodeMLAttrDef{intent}{text}
+{Specifies the intent attribute the value of which is '{\tt in}', '{\tt out}' or '{\tt inout}'.}{O}
+\XcodeMLAttrDef{is\_protected}{bool}
+{{\tt true} if the type has the {\tt protected} attribute.}{O}
+\XcodeMLAttrDef{is\_value}{bool}
+{{\tt true} if the type has the {\tt value} attribute.}{O}
+\XcodeMLAttrDef{is\_volatile}{bool}
+{{\tt true} if the type has the {\tt volatile} attribute.}{O}
+\XcodeMLAttrDef{is\_asynchronous}{bool}
+{{\tt true} if the type has the {\tt asynchronous} attribute.}{O}
+\XcodeMLAttrDef{is\_contiguous}{bool}
+{{\tt true} if the type has the {\tt contiguous} attribute.}{O}
+\XcodeMLAttrDef{is\_class}{bool}
+{{\tt true} if the type is the {\tt class} type. If no type identifier({\tt ref}) is specified, the type represents '{\tt class(*)}'.}{O}
+\XcodeMLAttrDef{is\_procedure}{bool}
+{{\tt true} if the type is the {\tt procedure} type. If no type identifier({\tt ref}) is specified, the type represents '{\tt procedure()}'.}{O}
+\XcodeMLAttrDef{pass}{text}
+{'{\tt nopass}' or 'pass' if the {\tt pass} attribute is specfied.}{O}
+\XcodeMLAttrDef{pass\_arg\_name}{text}
+{If the {\tt pass} attribute is specified and it has an argument, specifies the argument name.}{O}
+\XcodeMLAttrDef{bind}{text}
+{Specifies the kind if the type has the {\tt bind} attribute. Only '{\tt C}' is available currently.}{O}
+\XcodeMLAttrDef{bind\_name}{text}
+{Specifies the bind name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection*{Example}
+
+The data type definition for "{\tt integer(kind=8)}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="Fint">
+  <kind>8</kind>
+</FbasicType>
+\end{XcodeMLFExample}
+
+The data type definition for "{\tt integer dimension(10, 1:10)}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="Fint">
+  <arrayIndex>
+    <FintConstant type="Fint">10</FintConstant>
+  </arrayIndex>
+  <indexRange>
+    <lowerBound>
+      <FintConstant type="Fint">1</FintConstant>
+    </lowerBound>
+  <upperBound>
+      <FintConstant type="Fint">10</FintConstant>
+  </upperBound>
+</FbasicType>
+\end{XcodeMLFExample}
+
+The data type definition for "{\tt character(len=10)}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="Fcharacter">
+  <len>
+    <FintConstant type="Fint">10</FintConstant>
+  </len>
+</FbasicType>
+\end{XcodeMLFExample}
+
+The data type definition for "{\tt type(s(selected\_int\_kind(10),100, :))}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="TYPE_ID_OF_S">
+<typeParamValues>
+  <functionCall type="Fint" is_intrinsic="true">
+    <name>selected_real_kind</name>
+  <arguments>
+       <FintConstant type="Fint">10</FintConstant>
+    </arguments>
+  </functionCall>
+    <FintConstant type="Fint">100</FintConstant>
+	<len></len>
+  <typeParamValues>
+</FbasicType>
+\end{XcodeMLFExample}
+
+The data type definition for "{\tt class(ss)}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="TYPE_ID_OF_S" is_class="true">
+</FbasicType>
+\end{XcodeMLFExample}
+
+The data type definition for "{\tt procedure(func1),pointer}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="TYPE_ID_OF_FUNC1" is_pointer="true"
+ is\_procedure="true">
+</FbasicType>
+\end{XcodeMLFExample}
+
+The data type definition for "{\tt integer,bind(c,name="cname")}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<FbasicType type="TYPE_NAME" ref="Fint" is_bind="C" bind_name="cname">
+</FbasicType>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt FfunctionType} element}
+
+The {\tt FfunctionType} element defines a function data type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(params?)
+%}
+\XcodeMLContentsModel{ (params?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{params}
+{Specifies the names of the dummy arguments if the type element has arguments.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier of the type element in the XcodeML/Fortran.}{R}
+\XcodeMLAttrDef{return\_type}{text}
+{Specifies the type identifier of the data type the function returns in the XcodeML/Fortran.
+If the value is '{\tt Fvoid}', the type element is the subroutine, otherwise the function.}{R}
+\XcodeMLAttrDef{result\_name}{text}
+{Specifies the name of the variable to set the return value specified by {\tt result} clause.}{O}
+\XcodeMLAttrDef{is\_recursive}{bool}
+{Specifies if the type element has the {\tt recursive} attribute.}{O}
+\XcodeMLAttrDef{is\_program}{bool}
+{Specifies if the type element is a main program.
+{\tt 1}(or {\tt true}) is specified if the type element is a main program.
+{\tt 0}(or {\tt false}) is specifies if the type element is the function or subroutine depending on the type of the return\_type attribute.}{O}
+\XcodeMLAttrDef{is\_internal}{bool}
+{Specifies if the type element is an internal subprogram.}{O}
+\XcodeMLAttrDef{bind}{text}
+{Specifies the kind if the type has the {\tt bind} attribute. Only '{\tt C}' is available currently.}{O}
+\XcodeMLAttrDef{bind\_name}{text}
+{Specifies if the bind name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection*{Example}
+
+The data type of the function foo below is as follows:
+\vspace{2mm}
+
+\begin{Fexample90}
+function foo(a, b)
+  integer a, b
+  real foo
+\end{Fexample90}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<FfunctionType type="F0" return_type="Freal">
+  <params>
+    <name type="Fint">a</name>
+    <name type="Fint">b</name>
+  </params>
+</FfunctionType>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt FstructType} element}
+
+The {\tt FstructType} element defines a derived type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(typeParams? symbols? typeBoundProcedures?)
+%}
+\XcodeMLContentsModel{ (typeParams? symbols? typeBoundProcedures?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{symbols}
+{Specifies the members of the type element.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier of the type element in the XcodeML/Fortran.}{R}
+\XcodeMLAttrDef{is\_public}{bool}
+{Specifies if the type element has the {\tt public} attribute as the access qualifier.
+The default value is 0(or false).}{O}
+\XcodeMLAttrDef{is\_private}{bool}
+{Specifies if the type element has the {\tt private} attribute as the access qualifier.
+The default value is 0(or false).}{O}
+\XcodeMLAttrDef{is\_sequence}{bool}
+{Specifies if the type element has the {\tt sequence} attribute in the type declaration statement.
+The default value is 0(or false).}{O}
+\XcodeMLAttrDef{is\_internal\_private}{bool}
+{Specifies if the type element has the {\tt praivate} attribute in the derived type definition. If so, {\tt 1}(or {\tt true}) is set.
+By the restriction of Fortran 90, the is\_internal\_private attribute cannot be specified if is\_sequence is {\tt 0}(or {\tt false})}{O}
+\XcodeMLAttrDef{is\_abstract}{bool}
+{{\tt true} if the type has the {\tt abstract} attribute.}{O}
+\XcodeMLAttrDef{extends}{text}
+{Specifies the type identifier of the parent type if the type is the extended type.}{O}
+\XcodeMLAttrDef{bind}{text}
+{Specifies the kind if the type has the {\tt bind} attribute. Only '{\tt C}' is available currently.}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt FstructType} element for the type {\tt S} below is as follows:
+\vspace{2mm}
+
+\begin{Fexample90}
+type S
+    integer x1, y1;
+end type S
+\end{Fexample90}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<estructType type="TYPE_NAME">
+  <symbols>
+    <id type="Fint">
+      <name type="Fint">x1</name>
+    </id>
+    <id type="Fint">
+      <name type="Fint">y1</name>
+    </id>
+  </symbols>
+</FstructType>
+\end{XcodeMLFExample}
+
+The {\tt FstructType} element for the type {\tt SS} below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+type SS extend S
+	integer,kind:: kind
+    integer,length:: n
+    real(kind):: a(n);
+contains
+	procedure:: f1=>f1e;
+	procedure,pass(arg):: f2=>f2e;
+	generic:: ff=>f1,f2
+	final:: fn
+end type
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<FstructType extends="TYPE_ID_OF_S">
+  <typeParams>
+    <typeParam attr="kind">
+      <name>kind</name>
+    </typeParam>
+    <typeParam attr="len">
+      <name>n</name>
+    </typeParam>
+  </typeParams>
+  <symbols>
+ <id>
+      <name>a</name>
+    </id>
+  </symbols>
+<typeBoundProcedures>
+ <typeBoundProcedure>
+      <name>f1</name>
+	  <binding>
+	     <name>f1e</name>
+	  </binding>
+    </typeBoundprocedure>
+<typeBoundProcedure pass="pass" arg_name="arg">
+      <name>f2</name>
+	  <binding>
+	      <name>f2e</name>
+	  </binding>
+    </typeBoundProcedure>
+<typeBoundGenericProcedure>
+  <name>ff</name>
+  <binding>
+        <name>f1</name>
+<name>f2</name>
+</binding>
+    </typeBoundProcedure>
+<finalProcedure>
+      <name>fn</name>
+    </finalProcedure>
+  </typeBoundProcedures>
+</FstructType>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt typeParams} element}
+
+The {\tt typeParams} element defines type parameters of the derived type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(typeParam+)
+%}
+\XcodeMLContentsModel{ (typeParam+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{typeParam}
+{Specifies the type parameters.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt typeParam} element}
+
+The {\tt typeParam} element defines each type parameter.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, value?)
+%}
+\XcodeMLContentsModel{ (name, value?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the type parameter.}{R}
+\XcodeMLElementDef{value}
+{Specifies the initial value of the type parameter.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier in XcodeML/Fortran representing the type element.}{R}
+\XcodeMLAttrDef{attr}{text}
+{Specifies the parameter attribute by either of "{\tt kind}" or "{\tt length}".}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt typeParamValues} element}
+
+The {\tt typeParamValues} element defines type parameter values.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((exprModel | len)+)
+%}
+\XcodeMLContentsModel{ ((exprModel | len)+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the value of the type parameter.}{O}
+\XcodeMLElementDef{len}
+{Specifies the value of the type parameter if the value is assumed('{\tt *}') or deferred('{\tt :}').}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt typeBoundProcedures} element}
+
+The {\tt typeBoundProcedures} element defines type-bound procedures.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((typeBoundprocedure|typeBoundGenericProcedure|finalProcedure)+)
+%}
+\XcodeMLContentsModel{ ((typeBoundprocedure|typeBoundGenericProcedure|finalProcedure)+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{typeBoundProcedure}
+{Specifies the type-bound procedure.}{O}
+\XcodeMLElementDef{typeBoundGenericProcedure}
+{Specifies the generic type-bound procedure.}{O}
+\XcodeMLElementDef{finalProcedure}
+{Specifies the final subroutine.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt typeBoundProcedure} element}
+
+The {\tt typeBoundProcedure} element defines each type-bound procedure.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, binding?)
+%}
+\XcodeMLContentsModel{ (name, binding?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the binding.}{R}
+\XcodeMLElementDef{binding}
+{Specifies the procedure name the binding name is bound.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{pass}{text}
+{"{\tt nopass}" or "pass" if the {\tt pass} attribute is specfied.}{O}
+\XcodeMLAttrDef{pass\_arg\_name}{text}
+{If the {\tt pass} attribute is specified and it has an argument, specifies the argument name.}{O}
+\XcodeMLAttrDef{is\_non\_overridable}{bool}
+{{\tt true} if the element has the {\tt non\_overridable} attribute.}{O}
+\XcodeMLAttrDef{is\_deferred}{bool}
+{{\tt true} if the element has the {\tt deferred} attribute.}{O}
+\XcodeMLAttrDef{is\_public}{bool}
+{{\tt true} if the element has the {\tt public} attribute.}{O}
+\XcodeMLAttrDef{is\_private}{bool}
+{{\tt true} if the element has the {\tt private} attribute.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt typeBoundGenericProcedure} element}
+
+The {\tt typeBoundGenericProcedure} element defines a generic type-bound procedure.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, binding)
+%}
+\XcodeMLContentsModel{ (name, binding) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the generic name or the name of the defined operator. Otherwise, empty.}{R}
+\XcodeMLElementDef{binding}
+{Specifies the procedure names the binding name is bound.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{is\_operator}{bool}
+{Specifies if the element represents a defined operator.}{O}
+\XcodeMLAttrDef{is\_assignment}{bool}
+{Specifies it the element represents an asignment operator.}{O}
+\XcodeMLAttrDef{is\_defined\_io}{text}
+{Either of "{\tt read(formatted)}", "{\tt read(unformatted)}",
+ "{\tt write(formatted)}" or "{\tt write(unformatted)}" is specified if the element represents
+ a user-defined I/O procedure.}{O}
+\XcodeMLAttrDef{is\_public}{bool}
+{{\tt true} if the element has the {\tt public} attribute.}{O}
+\XcodeMLAttrDef{is\_private}{bool}
+{{\tt true} if the element has the {\tt private} attribute.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt finalProcedure} element}
+
+The {\tt finalProcedure} element defines a final subroutine.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name)
+%}
+\XcodeMLContentsModel{ (name) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the final subroutine.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt binding} element}
+
+The {\tt binding} element represents a procedure list to bind.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name+)
+%}
+\XcodeMLContentsModel{ (name+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the procedure name to bind, the interface name or the bound name.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FenumType} element}
+
+The {\tt FenumType} element defines a enumeration data type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((name, value?)+)
+%}
+\XcodeMLContentsModel{ ((name, value?)+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the enumerator.}{R}
+\XcodeMLElementDef{value}
+{Specifies the value of the enumerator.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+

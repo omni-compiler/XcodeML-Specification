@@ -1,0 +1,369 @@
+\section{Definition and declaration element}
+
+\subsection{ {\tt globalDeclarations} element}
+
+The {\tt globalDeclarations} element is the element to declare external variables and to define functions in the program.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FfunctionDefinition | FmoduleDefinition)*
+%}
+\XcodeMLContentsModel{ (FfunctionDefinition | FmoduleDefinition)* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{FfunctionDefinition}
+{the definition of a Fortran 90 main program, function or subroutine.}{O}
+\XcodeMLElementDef{FmoduleDefinition}
+{the definition of a Fortran 90 module.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt declarations} element}
+
+The {\tt declarations} element is the element to declare variables etc. in the program.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varDecl | FstructDecl | externDecl | FuseDecl | FuseOnlyDecl | FinterfaceDecl | FnamelistDecl | FequivalenceDecl | FcommonDecl)*
+%}
+\XcodeMLContentsModel{ (varDecl | FstructDecl | externDecl | FuseDecl | FuseOnlyDecl | FinterfaceDecl | FnamelistDecl | FequivalenceDecl | FcommonDecl | FprocedureDecl | FimportDecl)* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varDecl}
+{the definition of a variable}{O}
+\XcodeMLElementDef{FstructDecl}
+{the Fortran 90 derived type definition}{O}
+\XcodeMLElementDef{externDecl}
+{the definition of an external variable or an identifier}{O}
+\XcodeMLElementDef{FuseDecl}
+{the Fortran 90 {\tt use} declaration}{O}
+\XcodeMLElementDef{FuseOnlyDecl}
+{the Fortran 90 {\tt use} declaration with the {\tt only} option}{O}
+\XcodeMLElementDef{FinterfaceDecl}
+{the Fortran 90 {\tt interface} statement}{O}
+\XcodeMLElementDef{FnamelistDecl}
+{the Fortran 90 namelist statement}{O}
+\XcodeMLElementDef{FequivalenceDecl}
+{the Fortran 90 {\tt equivalence} statement}{O}
+\XcodeMLElementDef{FcommonDecl}
+{the Fortran 90 {\tt common} statement}{O}
+\XcodeMLElementDef{FprocedureDecl}
+{the Fortran 2003 {\tt procedure} statement}{O}
+\XcodeMLElementDef{FimportDecl}
+{the Fortran 2003 {\tt import}  statement}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FfunctionDefinition} element}
+
+The {\tt FfunctionDefinition} element defines a program, function or subroutine.
+Differently from C language, arguments in Fortran are passed by references, so we prepare another entry than functionDefinition of XcodeML.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, symbols?, params?, declarations?, body)
+%}
+\XcodeMLContentsModel{ (name, symbols?, params?, declarations?, body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of  the function or  the subroutine.}{R}
+\XcodeMLElementDef{symbols}
+{Specifies the symbols included in the element.}{O}
+\XcodeMLElementDef{params}
+{Specifies the dummy arguments.}{O}
+\XcodeMLElementDef{declarations}
+{Specifies the definitions and declarations included in the element.}{O}
+\XcodeMLElementDef{body}
+{Specifies the executable statemtents included in the element.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt varDecl} element}
+
+The {\tt varDecl} element declares a variable.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, value?)
+%}
+\XcodeMLContentsModel{ (name, value?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the variable.}{R}
+\XcodeMLElementDef{value}
+{Specifies the initial value if present.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FstructDecl} element}
+
+The {\tt FstructDecl} element defines the derived type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name)
+%}
+\XcodeMLContentsModel{ (name) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the derived type.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt externDecl} element}
+
+The {\tt externDecl} element declares an external definition.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name)
+%}
+\XcodeMLContentsModel{ (name) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name	}
+{Specifies the name of the identifier of the external definition to declare.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FmoduleDefinition} element}
+
+The {\tt FmoduleDefinition} element represents a {\tt module} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(symbols?, declarations?, FcontainsStatement?)
+%}
+\XcodeMLContentsModel{ (symbols?, declarations?, FcontainsStatement?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{symbols}
+{Specifies the symbols included in the element.}{O}
+\XcodeMLElementDef{declarations}
+{Specifies the definitions and declarations included in the element.}{O}
+\XcodeMLElementDef{FcontainsStatement}
+{Specifies the {\tt contain} statement.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{name}{text}
+{Specified the module name.}{R}
+\XcodeMLAttrDef{is\_sub}{bool}
+{{\tt true} if the element represents a submodule.}{O}
+\XcodeMLAttrDef{parenet\_name}{text}
+{Specifies the name of the parent module.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FuseDecl} element}
+
+The {\tt FuseDecl} element represents an {\tt use} statement without the {\tt only} option.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(rename*)
+%}
+\XcodeMLContentsModel{ (rename*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{rename}
+{Specifies the rename.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{name}{text}
+{Specifies the module name.}{R}
+\XcodeMLAttrDef{intrinsic}{bool}
+{{\tt true} if the {\tt intrinsic} attribute is specified.
+ {\tt false} if the {\tt non\_intrinsic} attribute is specified.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FuseOnlyDecl} element}
+
+The {\tt FuseOnlyDecl} element represents an {\tt use} statement with the {\tt only} option.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(renamable*)
+%}
+\XcodeMLContentsModel{ (renamable*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{renamable}
+{Specifies the {\tt only} list.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{name}{text}
+{Specifies the module name.}{R}
+\XcodeMLAttrDef{intrinsic}{bool}
+{{\tt true} if the {\tt intrinsic} attribute is specified.
+ {\tt false} if the {\tt non\_intrinsic} attribute is specified.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FinterfaceDecl} element}
+
+The {\tt FinterfaceDecl} element represents an {\tt interface} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FmoduleProcedureDecl | FfunctionDecl)*
+%}
+\XcodeMLContentsModel{ (FmoduleProcedureDecl | FfunctionDecl)* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{FmoduleProcedureDecl}
+{Specifies the {\tt module procedure} statements included in the element.}{O}
+\XcodeMLElementDef{FfunctionDecl}
+{Specifies the functions and subroutines included in the element.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{name}{text}
+{Specifies the generic name or the defined operator name.}{O}
+\XcodeMLAttrDef{is\_operator}{bool}
+{Specifies if the interface is a defined operator.}{O}
+\XcodeMLAttrDef{is\_assignment}{bool}
+{Specifies if the interface is a defined assignment operator.}{O}
+\XcodeMLAttrDef{is\_defined\_io}{bool}
+{Either of "{\tt read(formatted)}", "{\tt read(unformatted)}",
+ "{\tt write(formatted)}" or "{\tt write(unformatted)}" is specified if the element represents
+ a user-defined I/O procedure.}{O}
+\XcodeMLAttrDef{is\_abstract}{bool}
+{{\tt true} if the element represents an abstract interface.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FmoduleProcedureDecl} element}
+
+The {\tt FmoduleProcedureDecl} represents a {\tt module procedure} statement in an {\tt interface} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name*)
+%}
+\XcodeMLContentsModel{ (name*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the procesure names.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FfunctionDecl} element}
+
+The {\tt FfunctionDecl} element represents a {\tt function} or {\tt subroutine} statement in an {\tt interface} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, params?, declarations?)
+%}
+\XcodeMLContentsModel{ (name, params?, declarations?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the function or the subroutine.}{R}
+\XcodeMLElementDef{params}
+{Specifies the dummy arguments.}{O}
+\XcodeMLElementDef{declarations}
+{Specifies the definitions and declarations in the element.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FprocedureDecl} element}
+
+The {\tt FprocedureDecl} element represents a {\tt procedure} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, value?)
+%}
+\XcodeMLContentsModel{ (name, value?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the procedure.}{R}
+\XcodeMLElementDef{value}
+{Specifies the initial value, if any.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FimportDecl} element}
+
+The {\tt FimportDecl} element represents an {\tt import} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name*)
+%}
+\XcodeMLContentsModel{ (name*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name to import.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+

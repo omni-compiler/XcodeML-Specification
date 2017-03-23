@@ -1,0 +1,1700 @@
+\section{Statement element}
+
+This is an XML element which corresponds to the syntax element in the Fortran 90 statement.
+The line number is attached to each element as an attribute, which can be used to extract file information and the line number where the particular statement is found.
+
+\subsection{ {\tt FassignStatement} element}
+
+The {\tt FassignStatement} element represents an assignement statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(lValueModel, exprModel)
+%}
+\XcodeMLContentsModel{ (lValueModel, exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{lValueModel}
+{Specifies the left-hand side expression. Refer to "\ref{sec:lValueModel} lValueModel".}{R}
+\XcodeMLElementDef{exprModel}
+{Specifies the right-hand side expression. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt exprStatement} element}
+
+The {\tt exprStatement} element represents a statement expressed by an expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression. Refer to "\ref{sec:exprModel} exprModel"}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FpointerAssignStatement} element}
+
+The {\tt FpointerAssignStatement} element represents a pointer assingment statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(lValueMode, exprModel)
+%}
+\XcodeMLContentsModel{ (lValueMode, exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{lValueModel}
+{Specifies the left-hand side expression. Refer to "\ref{sec:lValueModel} lValueModel".}{R}
+\XcodeMLElementDef{exprModel}
+{Specifies the right-hand side expression. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FifStatement} element}
+
+The {\tt FifStatement} element represents an {\tt if} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(condition, then, else?)
+%}
+\XcodeMLContentsModel{ (condition, then, else?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{condition}
+{Specifies the conditional expression.}{R}
+\XcodeMLElementDef{then}
+{Specifies the statement to execute if the condition falls true.}{R}
+\XcodeMLElementDef{else}
+{Specifies the statement to execute if the condition falls false.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FdoStatement} element}
+
+The {\tt FdoStatement} element represents a {\tt do} statement.
+The labelled {\tt do} construct must be replaced by an equivalent {\tt do} statement with the label eliminated.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(Var?, indexRange?, body?)
+%}
+\XcodeMLContentsModel{ (Var?, indexRange?, body?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{Var}
+{Specifies the index variable.}{O}
+\XcodeMLElementDef{indexRange}
+{Specifies the range of of the value of the index variable.}{O}
+\XcodeMLElementDef{body}
+{Specifies the statements included in the {\tt do} statement.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FdoWhileStatement} element}
+
+The {\tt FdoWhileStatement} element represents a {\tt do} statement with {\tt while} used as the controling expression.
+The labelled {\tt do while} construct must be replaced by an equivalent {\tt do while} statement with the label eliminated.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(condition, body?)
+%}
+\XcodeMLContentsModel{ (condition, body?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{condition}
+{Specifies the conditional expression.}{R}
+\XcodeMLElementDef{body}
+{Specifies the statements included in the {\tt do while} statement.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt continueStatement} element}
+
+The {\tt continueStatement} element represents a {\tt continue} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FcycleStatement} element}
+
+The {\tt FcycleStatement} element represents a {\tt cycle} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FexitStatement} element}
+
+The {\tt FexitStatement} element represents an {\tt exit} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FreturnStatement} element}
+
+The {\tt FreturnStatement} element represents a {\tt return} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt gotoStatement} element}
+
+The {\tt gotoStatement} element represents a {\tt go to} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((params, value)?)
+%}
+\XcodeMLContentsModel{ ((params, value)?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{params}
+{Specifies the statement label list of the computed {\tt go to} statement.
+ Neglected if the label\_name attribute is specified.}{O}
+\XcodeMLElementDef{value}
+{Specifies the expression of the computed {\tt go to} statement.
+ Neglected if the label\_name attribute is specified.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{label\_name}{text}
+{Specifies the statement label.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt statementLabel} element}
+
+The {\tt statementLabel} element represents a statement label of the following statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{label\_name}{text}
+{Specifies the statement label.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FselectCaseStatement} element}
+
+The {\tt FselectCaseStatement} element represents a {\tt select case} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(value, FcaseLabel*)
+%}
+\XcodeMLContentsModel{ (value, FcaseLabel*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{value}
+{Specifies the value to select.}{R}
+\XcodeMLElementDef{FcaseLabel}
+{Specifies the {\tt case} statements included in the element.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FcaseLabel} element}
+
+The {\tt FcaseLabel} element represents a {\tt case} statement in a {\tt select case} construct.
+If a FcaseLabel has neither a {\tt value} element nor an {\tt indexRange} element, it is assume to be the {\tt case default} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((value | indexRange)*, body)
+%}
+\XcodeMLContentsModel{ ((value | indexRange)*, body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{value}
+{Specifies the value of the selector.}{O}
+\XcodeMLElementDef{indexRange}
+{Specifies the range of the selector.}{O}
+\XcodeMLElementDef{body}
+{Specifies the statements included in the element.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name of the corresponding {\tt select case} statement.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FwhereStatement} element}
+
+The {\tt FwhereStatement} element represents a {\tt where} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(condition, then, else?)
+%}
+\XcodeMLContentsModel{ (condition, then, else?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{condition}
+{Specifies the conditional expression.}{R}
+\XcodeMLElementDef{then}
+{Specifies the statement to execute if the condition falls true.}{R}
+\XcodeMLElementDef{else}
+{Specifies the statement to execute if the condition falls false.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FstopStatement} element}
+
+The {\tt FstopStatement} element represents a {\tt stop} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{code}{text}
+{Specifies a stop code consisting of a string of up to five digits.}{O}
+\XcodeMLAttrDef{message}{text}
+{Specifies a stop code consisting of a default character constatnt.
+ Neglected if the code attribute is specified.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{Input/Output element}
+
+\subsubsection{ {\tt FreadStatement, FwriteStatement} element}
+
+The {\tt FreadStatement} element and the {\tt FwriteStatement} element correspond to the {\tt read} statement and the {\tt write} statement respectively.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(namedValueList, valueList)
+%}
+\XcodeMLContentsModel{ (namedValueList, valueList) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{namedValueList}
+{Specifies the control list.}{R}
+\XcodeMLElementDef{valueList}
+{Specifies the input or output list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{unit}
+{Specifies either '{\tt *}', the scalar default integer expression specifying the external file unit or the scalar default character variable specifying the internal file unit.}{R}
+\XcodeMLSpecifier{fmt}
+{Specifies the format specifier, either '{\tt *}', the scalar default character expression, the statement label or the scalar default integer variable.}{R}
+\XcodeMLSpecifier{nml}
+{Specifies the name of the variable group.}{O}
+\XcodeMLSpecifier{rec}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{iostat}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{end}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{advance}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{size}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{eor}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{pos}
+{Specifies the scalar integer expression.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{blank}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{pad}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{decimal}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{delim}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{round}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{sign}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{asynchronous}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{id}
+{Specifies the name of the variable.}{O}
+\end{XcodeMLControlList}
+
+
+\subsubsection{ {\tt FprintStatement} element}
+
+The {\tt FprintStatement} element corresponds to the {\tt print} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(valueList)
+%}
+\XcodeMLContentsModel{ (valueList) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{valueList}
+{Specifies the output list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{format}{text}
+{Specifies the fortmat specifier.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FrewindStatement, FendFileStatement, FbackspaceStatement} element}
+
+The {\tt FrewindStatement} element, the {\tt FendFileStatement} element and the {\tt FbackspaceStatement} element
+correspond to the {\tt rewind} statement, the {\tt end file} statement and the {\tt backspace} statement respectively.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(namedValueList)
+%}
+\XcodeMLContentsModel{ (namedValueList) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{namedValueList}
+{Specifies the control list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{unit}
+{Specifies the scalar default integer expression specifying the external file unit.}{R}
+\XcodeMLSpecifier{iostat}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\end{XcodeMLControlList}
+
+
+\subsubsection{ {\tt FopenStatement} element}
+
+The {\tt FopenStatement} element corresponds to the {\tt open} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(valueList)
+%}
+\XcodeMLContentsModel{ (valueList) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{valueList}
+{Specifies the output list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{unit}
+{Specifies the scalar default integer expression specifying the external file unit.}{R}
+\XcodeMLSpecifier{iostat}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{file}
+{Specifies the name of the scalar default character variable containing the file name.}{O}
+\XcodeMLSpecifier{status}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{access}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{form}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{recl}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{blank}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{position}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{action}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{delim}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{pad}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{newunit}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{decimal}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{delim}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{encoding}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{round}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{sign}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{asynchronous}
+{Specifies the scalar default character expression.}{O}
+\end{XcodeMLControlList}
+
+
+\subsubsection{ {\tt FcloseStatement} element}
+
+The {\tt FcloseStatement} element corresponds to the {\tt close} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(valueList)
+%}
+\XcodeMLContentsModel{ (valueList) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{valueList}
+{Specifies the output list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{unit}
+{Specifies the scalar default integer expression specifying the external file unit.}{R}
+\XcodeMLSpecifier{iostat}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{status}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\end{XcodeMLControlList}
+
+
+\subsubsection{ {\tt FinquireStatement} element}
+
+The {\tt FinquireStatement} element corresponds to the {\tt inquire} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(namedValueList, valueList)
+%}
+\XcodeMLContentsModel{ (namedValueList, valueList) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{namedValueList}
+{Specifies the control list.}{R}
+\XcodeMLElementDef{valueList}
+{Specifies the input or output list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{iolength}
+{Specifies the scalar default integer expression. If this is specifies, no other specifiers
+ can be specified and the output list must be specified by the {\tt valueList} element.}{O}
+\XcodeMLSpecifier{unit}
+{Specifies the scalar default integer expression specifying the external file unit.}{O}
+\XcodeMLSpecifier{file}
+{Specifies the name of the scalar default character variable containing the file name.}{O}
+\XcodeMLSpecifier{iostat}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{exist}
+{Specifies the name of the scalar default logical variable.}{O}
+\XcodeMLSpecifier{opened}
+{Specifies the name of the scalar default logical variable.}{O}
+\XcodeMLSpecifier{number}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{named}
+{Specifies the name of the scalar default logical variable.}{O}
+\XcodeMLSpecifier{name}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{access}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{sequential}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{direct}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{form}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{formatted}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{unformatted}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{recl}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{nextrecl}
+{Specifies the name of the scalar default integer variable.}{O}
+\XcodeMLSpecifier{blank}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{position}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{action}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{read}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{write}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{rewrite}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{delim}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{pad}
+{Specifies the name of the scalar default character variable.}{O}
+\XcodeMLSpecifier{pending}
+{Specifies the name of the scalar default logical variable.}{O}
+\XcodeMLSpecifier{pos}
+{Specifies the scalar default integer expression.}{O}
+\XcodeMLSpecifier{size}
+{Specifies the scalar default integer expression.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{decimal}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{delim}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{encoding}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{round}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{sign}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{stream}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{asynchronous}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{is}
+{Specifies the scalar integer expression.}{O}
+\end{XcodeMLControlList}
+
+
+\subsubsection{ {\tt FwaitStatement} element}
+
+The {\tt Fwait} element corresponds to the {\tt wait} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{unit}
+{Specifies either '{\tt *}', the scalar default integer expression specifying the external file unit or the scalar default character variable specifying the internal file unit.}{R}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{end}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{eor}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{iostat}
+{Specifies the scalar default integer variable.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{id}
+{Specifies the scalar default integer expression.}{O}
+\end{XcodeMLControlList}
+
+\subsubsection{ {\tt FflushStatement} element}
+
+The {\tt FflushStatement} element corresponds to the {\tt flush} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+\begin{XcodeMLControlList}
+\XcodeMLSpecifier{unit}
+{Specifies the scalar default integer expression specifying the external file unit.}{R}
+\XcodeMLSpecifier{err}
+{Specifies the statement label.}{O}
+\XcodeMLSpecifier{iomsg}
+{Specifies the scalar default character expression.}{O}
+\XcodeMLSpecifier{iostat}
+{Specifies the scalar default integer variable.}{O}
+\end{XcodeMLControlList}
+
+
+\subsection{ {\tt FformatDecl} element}
+
+The {\tt FformatDecl} element represents a {\tt format} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{format}{text}
+{Specifies the character string representing the format specification.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FdataDecl} element}
+
+The {\tt FdataDecl} element represents a {\tt data} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((varList, valueList)+)
+%}
+\XcodeMLContentsModel{ ((varList, valueList)+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varList}
+{Specifies the object list.}{R}
+\XcodeMLElementDef{valueList}
+{Specifies the value list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FnamelistDecl} element}
+
+The {\tt FnamelistDecl} element represents a {\tt namelist} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varList+)
+%}
+\XcodeMLContentsModel{ (varList+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varList}
+{Specifies the name of the variable group and the list of the element variables.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FequivalenceDecl} element}
+
+The {\tt FequivalenceDecl} element represents an {\tt equivalent} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((varRef, varList)+)
+%}
+\XcodeMLContentsModel{ ((varRef, varList)+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the object. The object must be a variable, array element or substring.}{R}
+\XcodeMLElementDef{varList}
+{Specifies the object list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FcommonDecl} element}
+
+The {\tt FcommonDecl} element represents a {\tt common} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varList+)
+%}
+\XcodeMLContentsModel{ (varList+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varList}
+{Specifies the name of the common block and the list of the variable names.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FentryDecl} element}
+
+The {\tt FentryDecl} element represents an {\tt entry} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name, symbols?, params?)
+%}
+\XcodeMLContentsModel{ (name, symbols?, params?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of entry.}{R}
+\XcodeMLElementDef{symbols}
+{Specifies the symbols included in the element.}{O}
+\XcodeMLElementDef{params}
+{Specifies the dummy argumens.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{Allocation element}
+
+The following elements define the allocate statements.
+
+\subsubsection{ {\tt FallocateStatement} element}
+
+The {\tt FallocateStatement} element represents an {\tt allocate} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(alloc+, alloc\_opt*)
+%}
+\XcodeMLContentsModel{ (alloc+, alloc\_opt*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{alloc}
+{Specifies the allocation list.}{R}
+\XcodeMLElementDef{alloc\_opt}
+{Specifies the allocation option.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{stat\_name}{text}
+{Specifies the name of status variable.}{O}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier if the type is specified.}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt FallocateStatement} element for the {\tt allocate} statement below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+Class(t),pointer :: x(:)
+Class(*),pointer :: a(:),b(:)
+allocate(et::x(100),a(100))
+allocate(b,source=a,stat=s)
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<FallocateStatement type="ID_OF_ET"　>
+  <alloc>
+    <Var>x</Var>
+    <arrayIndex>
+      <FintConstant>100</FintConstant>
+    </arrayIndex>
+  </alloc>
+  <alloc>
+     <Var>a</Var>
+     <arrayIndex>
+       <FintConstant>100</FintConstant>
+     </arrayIndex>
+   </alloc>
+</FallocateStatement>
+<FallocateStatement>
+  <alloc>
+    <Var>b</Var>
+  </alloc>
+  <alloc\_opt kind="source">
+     <Var>a</Var>
+  </alloc\_opt>
+  <alloc\_opt kind="stat">
+     <Var>s</Var>
+  </alloc\_opt>
+</FallocateStatement>
+\end{XcodeMLFExample}
+
+
+\subsubsection{ {\tt FdeallocateStatement} element}
+
+The {\tt FdeallocateStatement} element represents a {\tt deallocate} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(alloc+, alloc\_opt*)
+%}
+\XcodeMLContentsModel{ (alloc+, alloc\_opt*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{alloc}
+{Specifies the name of the allocate object list.}{R}
+\XcodeMLElementDef{alloc\_opt}
+{Specifies the allocation option.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{stat\_name}{text}
+{Specifies the name of status variable.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsubsection{ {\tt FnullifyStatement} element}
+
+The {\tt FnullifyStatement} element represents a {\tt nullify} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(alloc+)
+%}
+\XcodeMLContentsModel{ (alloc+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{alloc}
+{Specifies the pointer object list.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FpragmaStatement} element}
+
+The {\tt FpragmaStatement} element represents a directive of OpenMP3.0 begining with ’{\tt !\$}’ or ’{\tt !\$OMP}’.
+It has the content as text data.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(#PCDATA)
+%}
+\XcodeMLContentsModel{ (\#PCDATA) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FcontainsStatement} element}
+
+The {\tt FcontainsStatement} element represents a {\tt contains} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(FfunctionDefinition+)
+%}
+\XcodeMLContentsModel{ (FfunctionDefinition+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{FfunctionDefinition}
+{Specifies the functions and subroutines included in the element.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt condition} element}
+
+The {\tt condition} element represents a conditional expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt then} element}
+
+The {\tt then} element represents a block executed if the condition falls true.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(body)
+%}
+\XcodeMLContentsModel{ (body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{body}
+{Specifies the statements included in the {\tt then} statement.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt else} element}
+
+The {\tt else} element represents a block executed if the condition falls false.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(body)
+%}
+\XcodeMLContentsModel{ (body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the statements included int the {\tt else} statement.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt alloc} element}
+
+The {\tt alloc} element represents an object in the allocation list of the {\tt allocate}
+and {\tt deallocate} statement and in the pointer list of the {\tt nullify} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((FmemberRef | Var), (arrayIndex | indexRange)?, coShape?*)
+%}
+\XcodeMLContentsModel{ ((FmemberRef | Var), (arrayIndex | indexRange)?, coShape?*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{FmemberRef}
+{Specifies the reference to the component of the structure.}{R}
+\XcodeMLElementDef{Var}
+{Specifies the variable.}{R}
+\XcodeMLElementDef{arrayIndex}
+{Specified if the type element is the array type and the size is expressed by the number of
+ the elements. Can be repeated the number of the dimension times together with the {\tt indexRange} element.
+ Neglected if the element is a child element of the {\tt FnullifyStatement}.}{O}
+\XcodeMLElementDef{indexRange}
+{Specified if the type element is the array type and the size is expressed by the upper and lower bounds.
+ Can be repeated the number of the dimension times together with the {\tt arrayIndex} element.
+ Neglected if the element is a child element of the {\tt FnullifyStatement}.}{O}
+\XcodeMLElementDef{coShape}
+{Specified if the element represents the allocation of a coarray.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt allocOpt} element}
+
+The {\tt allocOpt} element represents an {\tt alloc} option.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel+)
+%}
+\XcodeMLContentsModel{ (exprModel+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression for the value of the element.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{kind}{text}
+{Specifies "errmsg", "mold", "source" or "stat" as the kind of the {\tt alloc} option.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt forallStatement} element}
+
+The {\tt forAllStatement} element represents a {\tt forall} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((var, indexRange)+, condition?, body)
+%}
+\XcodeMLContentsModel{ ((var, indexRange)+, condition?, body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{var}
+{Specifies the index variable.}{O}
+\XcodeMLElementDef{indexRange}
+{Specifies the value range of the index variable.}{O}
+\XcodeMLElementDef{condition}
+{Specifies the masking condition.}{O}
+\XcodeMLElementDef{body}
+{Specifies the content statements of the forall statement.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier if the type is specified.}{O}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt forallStatement} element for the {\tt forall} construct below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+forall (i=1:n,j=1:m,ix(i,j)>0)
+ ix(i,j)=0
+end forall
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<forallStatement>
+  <Var>i</Var>
+  <indexRange>
+    <lowerBound>
+      <FintConstant>1</FintConstant>
+    </lowerBound>
+    <upperBound>
+      <Var>n</Var>
+    </upperBound>
+    <step>
+      <FintConstant>1</FintConstant>
+    </step>
+  </indexRange>
+    <Var>j </Var>
+  <indexRange>
+    <lowerBound>
+      <FintConstant>1</FintConstant>
+    </lowerBound>
+    <upperBound>
+      <Var>m</Var>
+    </upperBound>
+    <step>
+      <FintConstant>1</FintConstant>
+    </step>
+  </indexRange>
+  <condition>
+     <logGTExpr>
+       <FarrayRef>
+         <varRef>
+           <Var>ix</Var>
+         </varRef>
+         <arrayIndex>
+           <Var>i</Var>
+         </arrayIndex>
+         <arrayIndex>
+           <Var>j</Var>
+         </arrayIndex>
+       </FarrayRef>
+       <FintConstant>0</FintConstant>
+     </logGTExpr>
+   </condition>
+  <body>
+    <FassignStatement">
+      <FarrayRef>
+        <varRef>
+          <Var>ix</Var>
+        </varRef>
+        <arrayIndex>
+          <Var>i</Var>
+        </arrayIndex>
+        <arrayIndex>
+          <Var>j</Var>
+        </arrayIndex>
+      </FarrayRef>
+      <FintConstant>0</FintConstant>
+    </FassignStatement>
+  </body>
+</FdoStatement>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt FdoConcurrentStatement} element}
+
+The {\tt FdoConcurrentStatement} element represents a {\tt do concurrent} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%((var, indexRange)+, condition?, body?)
+%}
+\XcodeMLContentsModel{ ((var, indexRange)+, condition?, body?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{var}
+{Specifies the {\tt do} variable.}{R}
+\XcodeMLElementDef{indexRange}
+{Specifies the value range of the {\tt do} variable.}{R}
+\XcodeMLElementDef{condition}
+{Specifies the masking condition.}{O}
+\XcodeMLElementDef{body}
+{Specifies the content statements.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier if the type is specified.}{O}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt selectTypeStatement} element}
+
+The {\tt selectTypeStatement} element represents a {\tt select type} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(id, typeGuard*)
+%}
+\XcodeMLContentsModel{ (id, typeGuard*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{id}
+{Specifies the variable or the expression (and its the associate name) to test the type.}{R}
+\XcodeMLElementDef{typeGuard}
+{Specifies the {\tt type guard} statement in the construct.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt selectTypeStatement} element for the {\tt select type} construct below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+class(t) x
+...
+select type(p=>x)
+type is(t1)
+  ...
+type is(t2)
+  ...
+class is(t3)
+  ...
+type default
+  ...
+end select
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<selectTypeStatement>
+  <id>
+    <name>p</name>
+    <value>
+       <Var>x</Var>
+    </value>
+  </id>
+  <typeGuard kind="TYPE_IS" type="TYPE_ID_OF_T1">
+    <body>
+      ...
+    </body>
+  </typeGuard>
+  <typeGuard kind="TYPE_IS" type="TYPE_ID_OF_T2">
+    <body>
+      ...
+    </body>
+  </typeGuard>
+  <typeGuard kind="CLASS_IS" type="TYPE_ID_OF_T3">
+    <body>
+      ...
+    </body>
+  </typeGuard>
+  <typeGuard kind="TYPE_DEFAULT">
+    <body>
+      ...
+    </body>
+  </typeGuard>
+</selectTypeStatement>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt typeGuard} element}
+
+The {\tt typeGuard} element represents a {\tt type guard} statement in the {\tt select type} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(body)
+%}
+\XcodeMLContentsModel{ (body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{body}
+{Specifies the content statements.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{kind}{text}
+{Specifies "{\tt TYPE\_IS}", "{\tt CLASS\_IS}" or "{\tt TYPE\_DEFAULT}" as the kind of the type guard.}{R}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier to compare.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt syncAllStatement} element}
+
+The {\tt syncAllStatement} element represents a {\tt sync all} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(syncStat*)
+%}
+\XcodeMLContentsModel{ (syncStat*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{syncStat}
+{Specifies the stat specifiers.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt syncImagesStatement} element}
+
+The {\tt syncImagesStatement} element represents a {\tt sync image} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(expModer?, syncStat*)
+%}
+\XcodeMLContentsModel{ (expModer?, syncStat*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression representing the image. Omitted if '{\tt *}' is specified.}{O}
+\XcodeMLElementDef{syncStat}
+{Specifies the stat specifiers.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt syncMemoryStatement} element}
+
+The {\tt syncMemoryStatement} element represents a {\tt sync memory} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(syncStat*)
+%}
+\XcodeMLContentsModel{ (syncStat*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{syncStat}
+{Specifies the stat specifiers.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt lock/unlockStatement} element}
+
+The {\tt lock/unlockStatement} element represents a {\tt lock/unlock} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(Var?, syncStat*)
+%}
+\XcodeMLContentsModel{ (Var?, syncStat*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{Var}
+{Specifies the lock variable.}{O}
+\XcodeMLElementDef{syncStat}
+{Specifies the stat specifiers.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt syncStat} element}
+
+The {\tt syncStat} element represents a {\tt stat} specifier.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(Var)
+%}
+\XcodeMLContentsModel{ (Var) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{Var}
+{Specifies the variable.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{kind}{text}
+{Specifies "{\tt STAT}", "{\tt ERRMSG}" or "{\tt ACQUIRED\_LOCK}" as the kind of the stat speficier.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt criticalStatement} element}
+
+The {\tt criticalStatement} element represents a {\tt critical} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(body)
+%}
+\XcodeMLContentsModel{ (body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{body}
+{Specifies the content statements.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt associateStatement} element}
+
+The {\tt associateStatement} element represents a {\tt associate} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(symbols, body)
+%}
+\XcodeMLContentsModel{ (symbols, body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{symbols}
+{Specifies the bindings within the construct.}{R}
+\XcodeMLElementDef{body}
+{Specifies the content statements.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt associateConstruct} element for the {\tt associate} statement below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+associate(x=>... , y=>...)
+ ... = x
+ ... = y
+end associate
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<associateConstruct>
+  <symbols>
+    <id>
+      <name>x</name>
+      <value>
+        ...
+      </value>
+    </id>
+    <id>
+      <name>y</name>
+      <value>
+        ...
+      </value>
+    </id>
+  </symbols>
+  <body>
+     ...
+  </body>
+</associateConstruct>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt blockStatement} element}
+
+The {\tt blockStatement} element represents a {\tt block} construct.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(symbols?, declarations?, body)
+%}
+\XcodeMLContentsModel{ (symbols?, declarations?, body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{symbols}
+{Specifies the symbols included in the element.}{O}
+\XcodeMLElementDef{declarations}
+{Specifies the declarations included in the block construct.}{O}
+\XcodeMLElementDef{body}
+{Specifies the content statements.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attriubutes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{construct\_name}{text}
+{Specifies the construct name.}{O}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The {\tt blockConstruct} element for the {\tt block} construct below is as follows:
+\vspace{2mm}
+
+\begin{Fexample2008}
+block
+ integer i
+ real x
+  ...
+end block
+\end{Fexample2008}
+\vspace{1mm}
+
+\begin{XcodeMLFExample}
+<blockConstruct>
+  <symbols>
+     <id type="Fint" sclass="flocal">
+       <name>i</name>
+     </id>
+     <id type="Freal" sclass="flocal">
+       <name>a</name>
+     </id>
+   </symbols>
+   <declarations>
+     <varDecl>
+       <name type="Fint">i</name>
+     </varDecl>
+     <varDecl>
+       <name type="Freal">a</name>
+     </varDecl>
+  </declarations>
+  <body>
+     ...
+  </body>
+</blockConstruct>
+\end{XcodeMLFExample}
+
+

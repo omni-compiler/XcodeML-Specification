@@ -1,0 +1,34 @@
+\section{ {\tt XcodeProgram} element}
+
+Programs written in XcodeML/Fortran comprises a Type table and global external definitions. The top-level element in an XcodeML/Fortran file is the {\tt XcodeProgram} element:
+
+%\subsubsection*{Contents model}
+%{\tt
+%(typeTable, globalSymbols, globalDeclarations)
+%}
+\XcodeMLContentsModel{ (typeTable, globalSymbols, globalDeclarations) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{typeTable}
+{information on data type used by the program}{R}
+\XcodeMLElementDef{globalSymbols}
+{information on global variables used by the program}{R}
+\XcodeMLElementDef{globalDeclarations}
+{information about function and variable declarations}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{compiler-info}{text}
+{F-to-F translator information}{O}
+\XcodeMLAttrDef{version}{text}
+{F-to-F translator version information}{O}
+\XcodeMLAttrDef{time}{text}
+{Date and time of translation}{O}
+\XcodeMLAttrDef{language}{text}
+{source language information}{O}
+\XcodeMLAttrDef{source}{text}
+{source code information}{O}
+\end{XcodeMLAttributes}
+
+
+

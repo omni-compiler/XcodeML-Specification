@@ -1,0 +1,457 @@
+\section{General element}
+
+
+\subsection{ {\tt kind} element}
+
+The {\tt kind} element represents a kind paramter of the type.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(\#PCDATA)
+%}
+\XcodeMLContentsModel{ (\#PCDATA) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt id} element}
+
+The {\tt id} element represents an identifier of the name of the variable, array,
+structure component, dummy argument of the function or subroutine, etc..
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name)
+%}
+\XcodeMLContentsModel{ (name) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of the identifier(the name of the variable if the identifier corresponds to a variable etc.).}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{sclass}{text}
+{Specifies the storage class, one of '{\tt auto}', '{\tt param}', '{\tt extern}', '{\tt extern\_def}', '{\tt label}', '{\tt tagname}'.}{R}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{R}
+\end{XcodeMLAttributes}
+
+\subsubsection*{Example}
+
+The symbol table entry of the variable "{\tt xyz}" in "{\tt integer xyz}" is as follows:
+\vspace{2mm}
+
+\begin{XcodeMLFExample}
+<id sclass="extern_def" type="Fint">
+  <name>xyz</name>
+</id>
+\end{XcodeMLFExample}
+
+The symbol table entry of the function "{\tt foo}" in "{\tt function foo}" is as follows:
+Here, "{\tt F06f168}" is the type\_id of the data type of "{\tt foo}".
+\newline
+
+\begin{XcodeMLFExample}
+<id sclass="extern_def" type="F06f168">
+  <name>foo</name>
+</id>
+\end{XcodeMLFExample}
+
+
+\subsection{ {\tt name} element}
+
+The {\tt name} element specifies the name of a variable or a type name etc..
+
+%\subsubsection*{Contents model}
+%{\tt
+%(\#PCDATA)
+%}
+\XcodeMLContentsModel{ (\#PCDATA) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt value} element}
+
+The {\tt value} element represents an arbitrary value expressed by an expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the value.
+ Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{repeat\_counttyp}{text}
+{Specifies the repeat count of the element.
+ Valid only in the initialization expression of the {\tt data} statement.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt kind} params}
+
+The {\tt param} element represents a dummy argument list of the function or subroutine.
+The element is also used to represent a statement label list in the {\tt go to} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(name*)
+%}
+\XcodeMLContentsModel{ (name*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the names of the dummy arguments or the statement labels.
+ In the case of the statement labels, the type attribute of the name element must be '{\tt Fint}'.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt len} element}
+
+The {\tt len} element represents an arbitrary length expressed by an expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the length. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{is\_assumed\_shape}{bool}
+{{\tt true} if no length is specified("{\tt (:)}").}{O}
+\XcodeMLAttrDef{is\_assume\_size}{bool}
+{{\tt true} if the length is the assumed-size.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt body} element}
+
+The {\tt body} element represents a block of statements.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(statementModel*)
+%}
+\XcodeMLContentsModel{ (statementModel*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{statementModel}
+{Specifies arbitrary statements.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt rename} element}
+
+The {\tt rename} element represents a local name and a name accessed in the {\tt use} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{use\_name}{text}
+{Specifies the name accessed.}{R}
+\XcodeMLAttrDef{local\_name}{text}
+{Specifies the local name.}{R}
+\XcodeMLAttrDef{is\_operator}{bool}
+{{\tt true} if the element represents the rename of the defined operator.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt renamable} element}
+
+The {\tt renamable} element represents a local name and a name accessed, which are omissible, in the {\tt use} statement with the only option.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empy
+%}
+\XcodeMLContentsModel{ empy }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{use\_name}{text}
+{Specifies the name accessed.}{R}
+\XcodeMLAttrDef{local\_name}{text}
+{Specifies the local name.}{O}
+\XcodeMLAttrDef{is\_operator}{bool}
+{{\tt true} if the element represents the rename of the defined operator.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt arrayIndex} element}
+
+The {\tt arrayIndex} element represents an arbitrary index value(or size) expressed by an expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the value. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt indexRange} element}
+
+The {\tt indexRange} element represents an arbitrary range of the subscript(or size) expressed by an upper and lower bound and a step.
+The meaning of the element depends on the kind of the parant element.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(lowerBound?, upperBound?, step?)
+%}
+\XcodeMLContentsModel{ (lowerBound?, upperBound?, step?) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{lowerBound}
+{Specifies the lower bound. The kind of the parent element determines the default value.}{O}
+\XcodeMLElementDef{upperBound}
+{Specifies the upper bound. The kind of the parent element determines the default value.}{O}
+\XcodeMLElementDef{step}
+{Specifies the step. May be neglected depending on the kind of the parent element.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{is\_assumed\_shape}{bool}
+{{\tt true} in the case of the assumed-shape array.}{O}
+\XcodeMLAttrDef{is\_assumed\_size}{bool}
+{{\tt true} in the case of the assumed-size array.}{O}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt lowerBound} element}
+
+The {\tt lowerBound} element represents a lower bound of a range.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the lower bound. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt upperBound} element}
+
+The {\tt upperBound} element represents a upper bound of the range.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the upper bound. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt step} element}
+
+The {\tt step} element represents a stride of a range.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(exprModel)
+%}
+\XcodeMLContentsModel{ (exprModel) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{exprModel}
+{Specifies the expression of the stride. Refer to "\ref{sec:exprModel} exprModel".}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt FdoLoop} element}
+
+The {\tt FdoLoop} element represents an implied-do.
+The element defines all the implied-does in the {\tt data} statement, the I/O statement and the array constructor.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(Var, indexRange, value+)
+%}
+\XcodeMLContentsModel{ (Var, indexRange, value+) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{Var}
+{Specifies the {\tt do} variable.}{R}
+\XcodeMLElementDef{indexRange}
+{Specifies the upper and lower bounds.}{R}
+\XcodeMLElementDef{value}
+{Specifies the expression element for the value of the implied-do.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt namedValue} element}
+
+The {\tt namedValue} element represents a value with a keyword.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{name}{text}
+{Specifies the keyword.}{R}
+\XcodeMLAttrDef{value}{text}
+{Specifies the value.}{R}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt namedValueList} element}
+
+The {\tt namedValueList} element represents a value list with keywords.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(namedValue*)
+%}
+\XcodeMLContentsModel{ (namedValue*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{namedValue}
+{Specifies the value with the keyword.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt valueList} element}
+
+The {\tt valueList} element represents a value list expressed by an expression.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(value*)
+%}
+\XcodeMLContentsModel{ (value*) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{value}
+{Specifies the expression for the value.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{-}{-}
+{-}{-}
+\end{XcodeMLAttributes}
+
+
+\subsection{ {\tt varList} element}
+
+The {\tt varList} element represents a list.
+
+%\subsubsection*{Contents model}
+%{\tt
+%(varRef | FdoLoop)*
+%}
+\XcodeMLContentsModel{ (varRef | FdoLoop)* }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the item expressed by the reference to the variable.}{O}
+\XcodeMLElementDef{FdoLoop}
+{Specifies the list of the items expressed by the implied-do.}{O}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{name}{text}
+{Specifies the namelist group name if the parent is the {\tt FnamelistDecl} element.}{O}
+\end{XcodeMLAttributes}
+
+
