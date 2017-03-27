@@ -62,7 +62,7 @@ The {\tt FbasicType} element defines a reference to prmitive types or other type
 \XcodeMLElementDef{kind}
 {Specifies the kind parameter of the type element.}{O}
 \XcodeMLElementDef{len}
-{Specifies the length of the character string. Can be specified only when the type attribute of the type is Fcharacter.}{O}
+{Specifies the length of the character string. Can be specified only when the type attribute of the type is {\tt Fcharacter}.}{O}
 \XcodeMLElementDef{arrayIndex}
 {Specified if the type element is the array type and the size is expressed by the number of the elements. Can be repeated the number of the dimension times together with the {\tt indexRange} element.}{O}
 \XcodeMLElementDef{indexRange}
@@ -196,7 +196,7 @@ The data type definition for "{\tt procedure(func1),pointer}" is as follows:
 
 \begin{XcodeMLFExample}
 <FbasicType type="TYPE_NAME" ref="TYPE_ID_OF_FUNC1" is_pointer="true"
- is\_procedure="true">
+ is_procedure="true">
 </FbasicType>
 \end{XcodeMLFExample}
 
@@ -237,7 +237,7 @@ If the value is '{\tt Fvoid}', the type element is the subroutine, otherwise the
 \XcodeMLAttrDef{is\_program}{bool}
 {Specifies if the type element is a main program.
 {\tt 1}(or {\tt true}) is specified if the type element is a main program.
-{\tt 0}(or {\tt false}) is specifies if the type element is the function or subroutine depending on the type of the return\_type attribute.}{O}
+{\tt 0}(or {\tt false}) is specifies if the type element is the function or subroutine depending on the type of the {\tt return\_type} attribute.}{O}
 \XcodeMLAttrDef{is\_internal}{bool}
 {Specifies if the type element is an internal subprogram.}{O}
 \XcodeMLAttrDef{bind}{text}
@@ -292,13 +292,13 @@ The {\tt FstructType} element defines a derived type.
 The default value is 0(or false).}{O}
 \XcodeMLAttrDef{is\_private}{bool}
 {Specifies if the type element has the {\tt private} attribute as the access qualifier.
-The default value is 0(or false).}{O}
+The default value is {\tt 0}(or {\tt false}).}{O}
 \XcodeMLAttrDef{is\_sequence}{bool}
 {Specifies if the type element has the {\tt sequence} attribute in the type declaration statement.
-The default value is 0(or false).}{O}
+The default value is {\tt 0}(or {\tt false}).}{O}
 \XcodeMLAttrDef{is\_internal\_private}{bool}
 {Specifies if the type element has the {\tt praivate} attribute in the derived type definition. If so, {\tt 1}(or {\tt true}) is set.
-By the restriction of Fortran 90, the is\_internal\_private attribute cannot be specified if is\_sequence is {\tt 0}(or {\tt false})}{O}
+By the restriction of Fortran 90, the {\tt is\_internal\_private} attribute cannot be specified if {\tt is\_sequence} is {\tt 0}(or {\tt false})}{O}
 \XcodeMLAttrDef{is\_abstract}{bool}
 {{\tt true} if the type has the {\tt abstract} attribute.}{O}
 \XcodeMLAttrDef{extends}{text}
@@ -477,7 +477,7 @@ The {\tt typeBoundProcedures} element defines type-bound procedures.
 \XcodeMLElementDef{typeBoundGenericProcedure}
 {Specifies the generic type-bound procedure.}{O}
 \XcodeMLElementDef{finalProcedure}
-{Specifies the final subroutine.}{O}
+{Specifies the {\tt final} subroutine.}{O}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
@@ -505,7 +505,7 @@ The {\tt typeBoundProcedure} element defines each type-bound procedure.
 
 \begin{XcodeMLAttributes}
 \XcodeMLAttrDef{pass}{text}
-{"{\tt nopass}" or "pass" if the {\tt pass} attribute is specfied.}{O}
+{"{\tt nopass}" or "{\tt pass}" if the {\tt pass} attribute is specfied.}{O}
 \XcodeMLAttrDef{pass\_arg\_name}{text}
 {If the {\tt pass} attribute is specified and it has an argument, specifies the argument name.}{O}
 \XcodeMLAttrDef{is\_non\_overridable}{bool}
@@ -554,7 +554,7 @@ The {\tt typeBoundGenericProcedure} element defines a generic type-bound procedu
 
 \subsection{ {\tt finalProcedure} element}
 
-The {\tt finalProcedure} element defines a final subroutine.
+The {\tt finalProcedure} element defines a {\tt final} subroutine.
 
 %\subsubsection*{Contents model}
 %{\tt
@@ -564,7 +564,7 @@ The {\tt finalProcedure} element defines a final subroutine.
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{name}
-{Specifies the name of the final subroutine.}{R}
+{Specifies the name of the {\tt final} subroutine.}{R}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}

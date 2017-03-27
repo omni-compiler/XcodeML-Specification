@@ -2,26 +2,28 @@
 
 This is an XML element that corresponds to the expression syntax element in the C language. Each element has a data type with a {\tt type} attribute associated with it that allows the data type information of the expression to be obtained.
 
+
 \subsection{Constant element}
 
 Constants can be expressed using the following elements:
 
 \begin{itemize}
 \item {\tt intConstant} element - specifies a constant that has an integer value;
-The element describes a decimal or hexadecimal (starting from 0) number.
-\item {\tt longlongConstant} element - specifies two 32-bit hexadecimal (starting at 0) numbers;
+      The element describes a decimal or hexadecimal (starting from {\tt 0}) number.
+\item {\tt longlongConstant} element - specifies two 32-bit hexadecimal (starting at {\tt 0}) numbers;
 \item {\tt floatConstant} element - specifies a constant that has a {\tt float}, {\tt double} or {\tt long double} value; 
-the element describes a floating-point literal.
+      the element describes a floating-point literal.
 \item {\tt stringConstant} element - specifies a character string;
-the element has the attribute {\tt is\_wide="[1|0|true|false]"} ({\tt 0} if omitted). When {\tt is\_wide} is {\tt 1} or {\tt true}, the character string has the {\tt wchar\_t} data type.
+      the element has the attribute {\tt is\_wide="[1|0|true|false]"} ({\tt 0} if omitted). When {\tt is\_wide} is {\tt 1} or {\tt true}, the character string has the {\tt wchar\_t} data type.
 \item {\tt moeConstant} element - specifies an {\tt enum} type constant;
-the element describes an {\tt enum} constant.
+      the element describes an {\tt enum} constant.
 \item {\tt funcAddr} element - specifies the address to a function.
-The element describes the function name.
+      The element describes the function name.
 \end{itemize}
 
 The constant data type is specified using the {\tt type} attribute.
 For {\tt moeConstant}, the {\tt moe} constant to be specified must be included in a symbol table that is within the scope of the expression.
+
 
 \subsection{Elements that reference variables}
 
@@ -29,9 +31,9 @@ There is a different element for referencing each of the different types of vari
 
 \begin{itemize}
 \item {\tt var} element - expression to reference global variables.
-The element specifies a variable name.
+      The element specifies a variable name.
 \item {\tt varAddr} element - expression to reference the address of a global variable.
-The element specifies a variable name.
+      The element specifies a variable name.
 \item The scope attribute is used to differentiate local variables.
 \item {\tt scope} attribute - has the value "{\tt local}", "{\tt global}" or "{\tt param}".
 \end{itemize}
@@ -80,13 +82,13 @@ When referencing structure members, use {\tt memberAddr} for referencing the ref
 
 \begin{itemize}
 \item {\tt memberAddr} - references the address of a structure member;
-for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+      for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
 \item {\tt memberRef} - references a structure member;
-for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+      for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
 \item {\tt memberArrayAddr} - references the address of an array structure member;
-for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+      for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
 \item {\tt memberArrayRef} - references an array structure member;
-for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+      for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
 \end{itemize}
 \vspace{1mm}
 
@@ -171,7 +173,7 @@ The following element represents a logical unary arithmetic operation. The opera
 \item {\tt logNotExpr} - logical negation (NOT)
 \end{itemize}
 
-The following elements represent the sizeof operator and the GCC extension operator:
+The following elements represent the {\tt sizeof} operator and the GCC extension operator:
 
 \begin{itemize}
 \item {\tt sizeOfExpr} - {\tt sizeof} operator; 

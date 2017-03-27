@@ -1,14 +1,15 @@
 \section{ {\tt XcodeProgram} element}
 
-Programs written in Xcode are constructed from external definitions, comprising a Type table and a global Id table. The top-level element in an Xcode file is the XcodeProgram element. The XcodeProgram element includes the following elements:
+Programs written in Xcode are constructed from external definitions, comprising a Type table and a global Id table. The top-level element in an Xcode file is the {\tt XcodeProgram} element. The {\tt XcodeProgram} element includes the following elements:
 
 \begin{itemize}
-\item typeTable element - information on data type used by the program,
-\item globalSymbols element - information on global variables used by the program, and
-\item globalDeclarations element - information about function and variable declarations.
+\item {\tt typeTable} element - information on data type used by the program,
+\item {\tt globalSymbols} element - information on global variables used by the program, and
+\item {\tt globalDeclarations} element - information about function and variable declarations.
 \end{itemize}
 
 The elements have the following information attributes:
+/newline
 
 \begin{itemize}
 \item {\tt compiler-info} - C-to-C compiler information,
@@ -18,9 +19,11 @@ The elements have the following information attributes:
 \item {\tt source} - source information.
 \end{itemize}
 
+
 \subsection{ {\tt name} element}
 
 This element is used to specify a name, such as a variable name or a type name. The name is a character string. The element attributes are type attributes. The attribute values are type identifiers.
+
 
 \subsection{ {\tt value} element}
 
@@ -28,12 +31,12 @@ This element is used to specify initial values. This element has the following s
 
 \begin{itemize}
 \item {\tt expression} (0 - multiple items) - expression that specifies a value
-\item {\tt value} - nested value. This corresponds to "{…}".
+\item {\tt value} - nested value. This corresponds to "{\tt {...}}".
 \end{itemize}
 
 \subsubsection*{Example}
 
-The following expression sets the initial value of an int type to 1.
+The following expression sets the initial value of an int type to {\tt 1}.
 \vspace{2mm}
 
 \begin{CExample}
@@ -42,7 +45,7 @@ The following expression sets the initial value of an int type to 1.
 </value>
 \end{CExample}
 
-The following expression sets the initial value of an int type vector to {1,2}.
+The following expression sets the initial value of an int type vector to {\tt {1,2}}.
 \vspace{2mm}
 
 \begin{XcodeMLExample}

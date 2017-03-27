@@ -252,10 +252,10 @@ The {\tt gotoStatement} element represents a {\tt go to} statement.
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{params}
 {Specifies the statement label list of the computed {\tt go to} statement.
- Neglected if the label\_name attribute is specified.}{O}
+ Neglected if the {\tt label\_name} attribute is specified.}{O}
 \XcodeMLElementDef{value}
 {Specifies the expression of the computed {\tt go to} statement.
- Neglected if the label\_name attribute is specified.}{O}
+ Neglected if the {\tt label\_name} attribute is specified.}{O}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
@@ -317,7 +317,7 @@ The {\tt FselectCaseStatement} element represents a {\tt select case} construct.
 \subsection{ {\tt FcaseLabel} element}
 
 The {\tt FcaseLabel} element represents a {\tt case} statement in a {\tt select case} construct.
-If a FcaseLabel has neither a {\tt value} element nor an {\tt indexRange} element, it is assume to be the {\tt case default} statement.
+If a {\tt FcaseLabel} has neither a {\tt value} element nor an {\tt indexRange} element, it is assume to be the {\tt case default} statement.
 
 %\subsubsection*{Contents model}
 %{\tt
@@ -1045,7 +1045,7 @@ The {\tt FnullifyStatement} element represents a {\tt nullify} statement.
 
 \subsection{ {\tt FpragmaStatement} element}
 
-The {\tt FpragmaStatement} element represents a directive of OpenMP3.0 begining with ’{\tt !\$}’ or ’{\tt !\$OMP}’.
+The {\tt FpragmaStatement} element represents a directive of OpenMP 3.0 begining with ’{\tt !\$}’ or ’{\tt !\$OMP}’.
 It has the content as text data.
 
 %\subsubsection*{Contents model}
@@ -1200,7 +1200,7 @@ The {\tt allocOpt} element represents an {\tt alloc} option.
 
 \begin{XcodeMLAttributes}
 \XcodeMLAttrDef{kind}{text}
-{Specifies "errmsg", "mold", "source" or "stat" as the kind of the {\tt alloc} option.}{R}
+{Specifies "{\tt errmsg}", "{\tt mold}", "{\tt source}" or "{\tt stat}" as the kind of the {\tt alloc} option.}{R}
 \end{XcodeMLAttributes}
 
 
@@ -1222,7 +1222,7 @@ The {\tt forAllStatement} element represents a {\tt forall} construct.
 \XcodeMLElementDef{condition}
 {Specifies the masking condition.}{O}
 \XcodeMLElementDef{body}
-{Specifies the content statements of the forall statement.}{R}
+{Specifies the content statements of the forall construct.}{R}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
@@ -1351,7 +1351,7 @@ The {\tt selectTypeStatement} element represents a {\tt select type} construct.
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{id}
-{Specifies the variable or the expression (and its the associate name) to test the type.}{R}
+{Specifies the variable or the expression (and its associate name) to test the type.}{R}
 \XcodeMLElementDef{typeGuard}
 {Specifies the {\tt type guard} statement in the construct.}{R}
 \end{XcodeMLChildElements}
@@ -1437,7 +1437,7 @@ The {\tt typeGuard} element represents a {\tt type guard} statement in the {\tt 
 \XcodeMLAttrDef{kind}{text}
 {Specifies "{\tt TYPE\_IS}", "{\tt CLASS\_IS}" or "{\tt TYPE\_DEFAULT}" as the kind of the type guard.}{R}
 \XcodeMLAttrDef{type}{text}
-{Specifies the type identifier to compare.}{O}
+{Specifies the type identifier to test.}{O}
 \end{XcodeMLAttributes}
 
 
@@ -1599,7 +1599,7 @@ The {\tt associateStatement} element represents a {\tt associate} construct.
 
 \subsubsection*{Example}
 
-The {\tt associateConstruct} element for the {\tt associate} statement below is as follows:
+The {\tt associateStatement} element for the {\tt associate} statement below is as follows:
 \vspace{2mm}
 
 \begin{Fexample2008}
@@ -1611,7 +1611,7 @@ end associate
 \vspace{1mm}
 
 \begin{XcodeMLFExample}
-<associateConstruct>
+<associateStatement>
   <symbols>
     <id>
       <name>x</name>
@@ -1629,7 +1629,7 @@ end associate
   <body>
      ...
   </body>
-</associateConstruct>
+</associateStatement>
 \end{XcodeMLFExample}
 
 
@@ -1661,7 +1661,7 @@ The {\tt blockStatement} element represents a {\tt block} construct.
 
 \subsubsection*{Example}
 
-The {\tt blockConstruct} element for the {\tt block} construct below is as follows:
+The {\tt blockStatement} element for the {\tt block} construct below is as follows:
 \vspace{2mm}
 
 \begin{Fexample2008}
@@ -1674,7 +1674,7 @@ end block
 \vspace{1mm}
 
 \begin{XcodeMLFExample}
-<blockConstruct>
+<blockStatement>
   <symbols>
      <id type="Fint" sclass="flocal">
        <name>i</name>
@@ -1694,7 +1694,7 @@ end block
   <body>
      ...
   </body>
-</blockConstruct>
+</blockStatement>
 \end{XcodeMLFExample}
 
 

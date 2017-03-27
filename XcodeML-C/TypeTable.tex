@@ -19,22 +19,26 @@ Data in a program are differentiated using data type names. These names are one 
 
 \begin{itemize}
 \item Basic data type names, which can be further split into those
+      that correspond to C language basic data types:
+      \vspace{2mm}
 
-that correspond to C language basic data types:
+      '{\tt void}', '{\tt char}', '{\tt short}', '{\tt int}' , '{\tt long}', '{\tt long\_long}', '{\tt unsigned\_char}', '{\tt unsigned\_short}', '{\tt unsigned}', '{\tt unsigned\_long}', '{\tt unsigned\_long\_long}', '{\tt float}', '{\tt double}', '{\tt long\_double}', '{\tt wchar\_t}', '{\tt bool}' ('{\tt \_Bool} type)
+      \vspace{2mm}
 
-'{\tt void}', '{\tt char}', '{\tt short}', '{\tt int}' , '{\tt long}', '{\tt long\_long}', '{\tt unsigned\_char}', '{\tt unsigned\_short}', '{\tt unsigned}', '{\tt unsigned\_long}', '{\tt unsigned\_long\_long}', '{\tt float}', '{\tt double}', '{\tt long\_double}', '{\tt wchar\_t}', '{\tt bool}' ('{\tt \_Bool} type)
+      that correspond to {\tt \_Complex} and {\tt \_Imaginary} types:
+      \vspace{2mm}
 
-that correspond to {\tt \_Complex} and {\tt \_Imaginary} types:
+      '{\tt float\_complex}', '{\tt double\_complex}', '{\tt long\_double\_complex}', '{\tt float\_imaginary}', '{\tt double\_imaginary}', '{\tt long\_double\_imaginary}'
+      \vspace{2mm}
 
-'{\tt float\_complex}', '{\tt double\_complex}', '{\tt long\_double\_complex}', '{\tt float\_imaginary}', '{\tt double\_imaginary}', '{\tt long\_double\_imaginary}'
+      that correspond to types built into the GCC:
+      \vspace{2mm}
 
-that correspond to types built into the GCC:
-
-'{\tt \_\_builtin\_va\_arg}'
+      '{\tt \_\_builtin\_va\_arg}'
+      \vspace{2mm}
 
 \item Derived data type names - arbitrary alphanumeric strings that are not part of the above mentioned basic data type names
-
-Derived data type names must be unique within a program.
+      Derived data type names must be unique within a program.
 \end{itemize}
 
 
@@ -48,6 +52,7 @@ The {\tt basicType} defines the basic data type for C and C99. The element has t
 \end{itemize}
 
 \subsubsection*{Example}
+\vspace{1mm}
 
 \begin{CExample}
 struct {int x; int y;} s;
@@ -97,7 +102,7 @@ The {\tt functionType} element defines a function data type.
 \item {\tt is\_inline} - specifies whether the function type is an inline type, using {\tt 0} or {\tt 1} ({\tt false} or {\tt true}).
 \end{itemize}
 
-If there is a prototype declaration, it includes the param elements corresponding to the argument elements.
+If there is a prototype declaration, it includes the {\tt param} elements corresponding to the argument elements.
 
 \subsubsection*{Example}
 
@@ -130,7 +135,7 @@ The element has the following subelement:
 \begin{itemize}
 \item {\tt arraySize} - Expression specifying the size of the array (number of elements). The element has an expression subelement.
 
-When the size cannot be specified using a number, specify a variable-length array. When an {\tt arrayType} element has an {\tt arraySize} subelement, the {\tt array\_size} attribute value is "{\tt *}". 
+      When the size cannot be specified using a number, specify a variable-length array. When an {\tt arrayType} element has an {\tt arraySize} subelement, the {\tt array\_size} attribute value is "{\tt *}". 
 \end{itemize}
 
 \subsubsection*{Example}
@@ -195,6 +200,7 @@ Member identifiers are defined in the {\tt moe} class of a symbol table that cor
 \subsubsection*{Example}
 
 In "{\tt enum { e1, e2, e3 = 10 } ee; }" the {\tt enumType} element corresponding to "{\tt ee}" is as follows.
+\vspace{2mm}
 
 \begin{XcodeMLExample}
   <enumType name="E0">
@@ -212,6 +218,7 @@ In "{\tt enum { e1, e2, e3 = 10 } ee; }" the {\tt enumType} element correspondin
     </symbols>
   </enumType>
 \end{XcodeMLExample}
+
 
 \subsection{Optional attributes for data type definition elements}
 
