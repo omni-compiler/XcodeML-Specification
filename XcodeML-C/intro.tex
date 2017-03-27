@@ -1,0 +1,16 @@
+\section{Introduction}
+
+
+Xcode for the C programming language is intermediate code that can be used to reconstruct a C program. This specification describes the Xcode XML representation.
+
+This intermediate code level has the following characteristics:
+
+\begin{itemize}
+\item Preserves information that can be used to reconstruct a C program,
+\item Can represent the type information of the C programming language, 
+\item Has syntax elements necessary for a variety of transformations, and
+\item Has a human-readable format (XML).
+\end{itemize}
+
+C-front is used to convert a C program to an XcodeML file. A decompiler is used to convert from an XcodeML file to a C program. Xcode programs can be created and analyzed using an analysis program.
+

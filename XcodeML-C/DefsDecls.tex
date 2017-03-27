@@ -1,0 +1,85 @@
+\section{ {\tt globalDeclarations} element}
+
+The {\tt globalDeclarations} element is used for declaring global variables in the program and defining functions. The element has the following elements:
+
+\begin{itemize}
+\item {\tt functionDefinition} element - used to define functions,
+\item {\tt varDecl} element - used to define variables,
+\item {\tt functionDecl} element - used to declare functions, and
+\item {\tt text} element - used to specify arbitrary text, such as directives.
+\end{itemize}
+
+
+\subsection{ {\tt functionDefinition} element}
+
+The {\tt functionDefinition} element is used to define functions. 
+The element has the following elements:
+
+\begin{itemize}
+\item {\tt name} element - specifies the function name,
+\item {\tt symbols} element - specifies the parameter symbol list,
+\end{itemize}
+
+The symbols element specifies the symbol table for the corresponding parameters.
+
+\begin{itemize}
+\item {\tt params} element - used to define parameters, and
+\item {\tt body} element - includes text for the {\tt functionDefinition} element within the body of the function. The {\tt functionDefinition} element within the body element indicates nested GCC functions. 
+\end{itemize}
+
+The element has the following attribute:
+
+\begin{itemize}
+\item {\tt is\_gccExtension} attribute.
+\end{itemize}
+
+
+\subsection{ {\tt params} element}
+
+The {\tt params} element specifies a list of parameters for the function.
+
+\begin{itemize}
+\item {\tt name} element - specifies the name elements corresponding to the parameters.
+\item {\tt ellipsis} - indicates variable length parameters. This element can be specified for the last subelement of the params element.
+\item The name elements within the {\tt params} element must be ordered according to the parameter sequence. If there is data type information for a parameter, specify it using the {\tt type} attribute of the {\tt name} element. 
+\end{itemize}
+
+
+\subsection{ {\tt varDecl} element}
+
+The {\tt varDecl} element is used to declare variables. Use the {\tt name} element to specify the names of identifiers used in function declarations. The element has the following elements:
+
+\begin{itemize}
+\item {\tt name} element - specifies the {\tt name} element corresponding to the function to be declared.
+\item {\tt value} element - specifies an initial value for the variable. Use the {\tt value} element to specify initial values for arrays and structures, using multiple expressions.
+\end{itemize}
+
+\subsubsection*{Example}
+\vspace{1mm}
+
+\begin{CExample}
+  int a[] = { 1, 2 };
+\end{CExample}
+\vspace{1mm}
+
+\begin{XcodeMLExample}
+  <varDecl>
+    <name>a</name>
+    <value>
+      <intConstant type="int">1</intConstant>
+      <intConstant type="int">2</intConstant>
+    </value>
+  </varDecl>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt functionDecl} element}
+
+The {\tt functionDecl} element is used to declare functions. 
+The element has the following element:
+
+\begin{itemize}
+\item {\tt name} element - specifies the function name.
+\end{itemize}
+
+

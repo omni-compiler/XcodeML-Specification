@@ -1,0 +1,57 @@
+\section{ {\tt XcodeProgram} element}
+
+Programs written in Xcode are constructed from external definitions, comprising a Type table and a global Id table. The top-level element in an Xcode file is the XcodeProgram element. The XcodeProgram element includes the following elements:
+
+\begin{itemize}
+\item typeTable element - information on data type used by the program,
+\item globalSymbols element - information on global variables used by the program, and
+\item globalDeclarations element - information about function and variable declarations.
+\end{itemize}
+
+The elements have the following information attributes:
+
+\begin{itemize}
+\item {\tt compiler-info} - C-to-C compiler information,
+\item {\tt version} - C-to-C compiler version information,
+\item {\tt time} - Date and time of compilation,
+\item {\tt language} - source language information, and
+\item {\tt source} - source information.
+\end{itemize}
+
+\subsection{ {\tt name} element}
+
+This element is used to specify a name, such as a variable name or a type name. The name is a character string. The element attributes are type attributes. The attribute values are type identifiers.
+
+\subsection{ {\tt value} element}
+
+This element is used to specify initial values. This element has the following subelements.
+
+\begin{itemize}
+\item {\tt expression} (0 - multiple items) - expression that specifies a value
+\item {\tt value} - nested value. This corresponds to "{…}".
+\end{itemize}
+
+\subsubsection*{Example}
+
+The following expression sets the initial value of an int type to 1.
+\vspace{2mm}
+
+\begin{CExample}
+<value>
+  <intConstant type="int">1</intConstant>
+</value>
+\end{CExample}
+
+The following expression sets the initial value of an int type vector to {1,2}.
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+<value>
+  <value>
+    <intConstant type="int">1</intConstant>
+    <intConstant type="int">2</intConstant>
+  </value>
+</value>
+\end{XcodeMLExample}
+
+

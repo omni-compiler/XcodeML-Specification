@@ -1,0 +1,295 @@
+\section{Code examples}
+
+\subsubsection*{Example 1}
+
+\begin{CExample}
+  int a[10];
+  int xyz;
+  struct {    int x;   int y;} S;
+  foo() {
+  	int *p; 
+  	p =  &xyz;	/* Statement 1 */
+  	a[4] = S.y;	/* Statement 2 */
+  }
+\end{CExample}
+
+Statement 1:
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <exprStatement>
+    <assignExpr type=" P6fc98">
+     <ponterRef type=" P6fc98">
+        <varAddr scope="local" type="P70768">p</varAddr>
+       </pointerRef>
+      <varAddr type=" P70828">xyz</varAddr>
+    </assignExpr>
+  </exprStatement>
+\end{XcodeMLExample}
+ 
+or
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <exprStatement>
+    <assignExpr type=" P6fc98">
+    <Var scope="local" type=" P6fc98">p</Var>
+       <varAddr type=" P70828">xyz</varAddr>
+   </assignExpr>
+  </exprStatement>
+\end{XcodeMLExample}
+
+Statement 2:
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <exprStatement>
+   <assignExpr type="int">
+      <pointerRef type="int">
+        <plusExpr type=" P6fc98">
+          <arrayAddr type=" P708e8">a</arrayAddr>
+          <intConstant type="int">4</intConstant>
+        </plusExpr>
+     </pointerRef>
+     <pointerRef type="int">
+        <memberAddr type="P0dede" member="y">
+           <varAddr type= "P70988">S</varAddr>
+        </memberAddr>
+    </pointerRef>
+   </assignExpr>
+  </exprStatement>
+\end{XcodeMLExample}
+
+or
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <exprStatement>
+   <assignExpr type="int">
+      <pointerRef type="int">
+        <plusExpr type=" P6fc98">
+          <arrayAddr type=" P708e8">a</arrayAddr>
+          <intConstant type="int">4</intConstant>
+        </plusExpr>
+     </pointerRef>
+     <memberRef type="int" member="y">
+        <varAddr type= "P70988">S</varAddr>
+    </memberRef>
+   </assignExpr>
+  </exprStatement>
+\end{XcodeMLExample}
+
+\vspace{1mm}
+ 
+\begin{XcodeMLExample}
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<XcodeProgram source="t3.c">
+  <!-- 
+    typedef struct complex {
+        double real;
+        double img;
+    } complex_t;
+    
+    complex_t x;
+    complex_t complex_add(complex_t x, double y);
+        
+    main()
+    {
+        complex_t z;
+    
+        x.real = 1.0;
+        x.img = 2.0;
+        
+        z = complex_add(x,1.0);
+    
+        printf("z=(%f,%f)\n",z.real,z.img);
+    
+    }
+    complex_t complex_add(complex_t x, double y)
+    {
+        x.real += y;
+        return x;
+    }
+  -->
+  <typeTable>
+    <pointerType type="P0" ref="S0"/>
+    <pointerType type="P1" ref="S0"/>
+    <pointerType type="P2" ref="S0"/>
+    <pointerType type="P3" ref="S0"/>
+    <pointerType type="P4" ref="S0"/>
+    <pointerType type="P5" ref="F0"/>
+    <pointerType type="P6" is_restrict="1" ref="char"/>
+    <pointerType type="P7" ref="F2"/>
+    <structType type="S0">
+      <symbols>
+        <id type="double">
+          <name>real</name>
+        </id>
+        <id type="double">
+          <name>img</name>
+        </id>
+      </symbols>
+    </structType>
+    <functionType type="F0" return_type="S0">
+      <params>
+        <name type="S0">x</name>
+        <name type="double">y</name>
+      </params>
+    </functionType>
+    <functionType type="F1" return_type="int">
+      <params/>
+    </functionType>
+    <functionType type="F2" return_type="int">
+      <params/>
+    </functionType>
+    <functionType type="F3" return_type="S0">
+      <params>
+        <name type="S0">x</name>
+        <name type="double">y</name>
+      </params>
+    </functionType>
+  </typeTable>
+  <globalSymbols>
+    <id type="F0" sclass="extern_def">
+      <name>complex_add</name>
+    </id>
+    <id type="S0" sclass="extern_def">
+      <name>x</name>
+    </id>
+    <id type="F1" sclass="extern_def">
+      <name>main</name>
+    </id>
+    <id type="F2" sclass="extern_def">
+      <name>printf</name>
+    </id>
+    <id type="S0" sclass="typedef_name">
+      <name>complex_t</name>
+    </id>
+    <id type="S0" sclass="tagname">
+      <name>complex</name>
+    </id>
+  </globalSymbols>
+  <globalDeclarations>
+    <varDecl>
+      <name>x</name>
+    </varDecl>
+    <funcDecl>
+      <name>complex_add</name>
+    </funcDecl>
+    <functionDefinition>
+      <name>main</name>
+      <symbols>
+        <id type="S0" sclass="auto">
+          <name>z</name>
+        </id>
+      </symbols>
+      <params/>
+      <body>
+        <compoundStatement>
+          <symbols>
+            <id type="S0" sclass="auto">
+              <name>z</name>
+            </id>
+          </symbols>
+          <declarations>
+            <varDecl>
+              <name>z</name>
+            </varDecl>
+          </declarations>
+          <body>
+            <exprStatement>
+              <assignExpr type="double">
+                <memberRef type="double" member="real">
+                  <varAddr type="P0" scope="local">x</varAddr>
+                </memberRef>
+                <floatConstant type="double">1.0</floatConstant>
+              </assignExpr>
+            </exprStatement>
+            <exprStatement>
+              <assignExpr type="double">
+                <memberRef type="double" member="img">
+                  <varAddr type="P1" scope="local">x</varAddr>
+                </memberRef>
+                <floatConstant type="double">2.0</floatConstant>
+              </assignExpr>
+            </exprStatement>
+            <exprStatement>
+              <assignExpr type="S0">
+                <Var type="S0" scope="local">z</Var>
+                <functionCall type="S0">
+                  <function>
+                    <funcAddr type="P5">complex_add</funcAddr>
+                  </function>
+                  <arguments>
+                    <Var type="S0" scope="local">x</Var>
+                    <floatConstant type="double">1.0</floatConstant>
+                  </arguments>
+                </functionCall>
+              </assignExpr>
+            </exprStatement>
+            <exprStatement>
+              <functionCall type="int">
+                <function>
+                  <funcAddr type="F2">printf</funcAddr>
+                </function>
+                <arguments>
+                  <stringConstant>z=(%f,%f)\n</stringConstant>
+                  <memberRef type="double" member="real">
+                    <varAddr type="P2" scope="local">z</varAddr>
+                  </memberRef>
+                  <memberRef type="double" member="img">
+                    <varAddr type="P3" scope="local">z</varAddr>
+                  </memberRef>
+                </arguments>
+              </functionCall>
+            </exprStatement>
+          </body>
+        </compoundStatement>
+      </body>
+    </functionDefinition>
+    <functionDefinition>
+      <name>complex_add</name>
+      <symbols>
+        <id type="S0" sclass="param">
+          <name>x</name>
+        </id>
+        <id type="double" sclass="param">
+          <name>y</name>
+        </id>
+      </symbols>
+      <params>
+        <name type="S0">x</name>
+        <name type="double">y</name>
+      </params>
+      <body>
+        <compoundStatement>
+          <symbols>
+            <id type="S0" sclass="param">
+              <name>x</name>
+            </id>
+            <id type="double" sclass="param">
+              <name>y</name>
+            </id>
+          </symbols>
+          <declarations/>
+          <body>
+            <exprStatement>
+              <asgPlusExpr type="double">
+                <memberRef type="double" member="real">
+                  <varAddr type="P4" scope="param">x</varAddr>
+                </memberRef>
+                <Var type="double" scope="param">y</Var>
+              </asgPlusExpr>
+            </exprStatement>
+            <returnStatement>
+              <Var type="S0" scope="param">x</Var>
+            </returnStatement>
+          </body>
+        </compoundStatement>
+      </body>
+    </functionDefinition>
+  </globalDeclarations>
+</XcodeProgram>
+\end{XcodeMLExample}
+
+

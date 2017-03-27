@@ -1,0 +1,152 @@
+\section{Statement element}
+
+This is an XML element that corresponds to the text syntax for the C language. The various elements have line number attributes added to them, which can be used to extract file information or the line number where the particular text is found.
+
+
+\subsection{ {\tt exprStatement} element}
+
+The {\tt exprStatement} indicates a statement that is specified as an expression. The element has an expression element.
+
+
+\subsection{ {\tt compoundStatement} element}
+
+The {\tt compoundStatement} element represents a compound statement. The element has the following elements:
+
+\begin{itemize}
+\item {\tt symbols} element - a symbol list defined within the compound statement.
+\item {\tt declarations} element - {\tt varDecl}, {\tt functionDefinition} or {\tt functionDecl} elements that are associated with declarations found within the compound statement.
+\item {\tt body} element - includes the main part of the compound statement.
+\end{itemize}
+
+
+\subsection{ {\tt ifStatement} element}
+
+Element used for {\tt if} statements. The element has the following elements:
+
+\begin{itemize}
+\item {\tt condition} element - includes conditional expressions as elements,
+\item {\tt then} element - includes the "{\tt then}" portion as an element,
+\item {\tt else} element - includes the "{\tt else}" portion as an element.
+\end{itemize}
+
+
+\subsection{ {\tt whileStatement} element}
+
+Element used for {\tt while} statements. The element has the following elements:
+
+\begin{itemize}
+\item {\tt condition} element - includes conditional expressions as elements and
+\item {\tt body} element - includes the main statement portion as an element.
+\end{itemize}
+
+
+\subsection{ {\tt doStatement} element}
+
+Element used for {\tt do} statements. The element has the following elements:
+
+\begin{itemize}
+\item {\tt body} element - includes the main statement portion as an element, and
+\item {\tt condition} element - includes conditional expressions as elements.
+\end{itemize}
+
+
+\subsection{ {\tt forStatement} element}
+
+Element used for {\tt for} statements. The element has the following elements:
+
+\begin{itemize}
+\item {\tt init} element - includes an initialization expression as an element,
+\item {\tt condition} element - includes conditional expressions as elements,
+\item {\tt iter} element  - includes the iteration expression, and
+\item {\tt body} element - includes the main body of the for statement.
+\end{itemize}
+
+
+\subsection{ {\tt breakStatement} element}
+
+Element used for {\tt break} statements. This is an empty element.
+
+
+\subsection{ {\tt continueStatement} element}
+
+Element used for {\tt continue} statements. This is an empty element.
+
+
+\subsection{ {\tt returnStatement} element}
+
+Element used for {\tt return} statements. The element has the {\tt return} expression as an element.
+
+
+\subsection{ {\tt gotoStatement} element}
+
+Element used for {\tt goto} statements. The element has either a {\tt name} element or an expression as a subelement. The jump address for GCC can be specified in the expression with the following elements:
+
+\begin{itemize}
+\item {\tt name} element - specifies the label name and
+\item {\tt expression} - specifies the jump address value.
+\end{itemize}
+
+
+\subsection{ {\tt statementLabel} element}
+
+Element used for the {\tt goto} target label. The element has the label name as a {\tt name} element.
+
+\begin{itemize}
+\item {\tt name} element - specifies the label name
+\end{itemize}
+
+
+\subsection{ {\tt switchStatement} element}
+
+Element used for {\tt switch} statements. The element has the following elements:
+
+\begin{itemize}
+\item {\tt value} element - specifies the {\tt switch} value and
+\item {\tt body} element - specifies the main body of the {\tt switch} statement.
+\end{itemize}
+
+
+\subsection{ {\tt caseLabel} element}
+
+Element used for the {\tt case} statement in a {\tt switch} statement. The element has the {\tt case} value as an element.
+
+\begin{itemize}
+\item {\tt value} element - specifies the {\tt case} value
+\end{itemize}
+
+
+\subsection{ {\tt gccRangedCaseLabel} element}
+
+Element used to specify the range in a GCC extension case statement. The element has the {\tt case} value as an element.
+
+\begin{itemize}
+\item {\tt value} element - specifies the lower limit of the {\tt case} value.
+\item {\tt value} element - specifies the upper limit of the {\tt case} value.
+\end{itemize}
+
+
+\subsection{ {\tt defaultLabel} element}
+
+Element used for the {\tt default} label in a {\tt switch} statement.
+
+
+\subsection{ {\tt pragma} element}
+
+The pragma element is used for the {\tt \#pragma} statement. The element has the character string that is used to specify the {\tt \#pragma} statement content.
+
+
+\subsection{ {\tt text} element}
+
+The {\tt text} element contains arbitrary text. It is used to represent a string, such as a compiler-dependent directive, as an element. The element contains an arbitrary character string. This element also appears in {\tt globalDeclarations}.
+
+
+\subsection{Line number attribute}
+
+All elements used for statements have attributes that indicate the line number and file name of the statement. 
+
+\begin{itemize}
+\item {\tt lineno} - has the value of the line number of the statement
+\item {\tt file} - has the name of the file that contains the statement
+\end{itemize}
+
+

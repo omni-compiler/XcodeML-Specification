@@ -1,0 +1,232 @@
+\section{Other elements and attributes}
+
+\subsection{ {\tt typeName} element}
+
+The {\tt typeName} element represents the name of the type. Various subelements are specified, such as {\tt sizeOfExpr}, {\tt gccAlignOfExpr}, and {\tt builtin\_op}. The attribute contains the type that indicates the data type name identifier.
+
+\subsection{ {\tt is\_gccExtension} attribute}
+
+The {\tt is\_gccExtension} attribute defines whether or not the GCC {\tt \_extension\_} keyword is added to the beginning of the element. The attribute has a value of {\tt 0} or {\tt 1} ({\tt false} or {\tt true}). The {\tt is\_gccExtension} attribute can be omitted, in which case it is the same as assigning a 0 value. The following elements can have the {\tt is\_gccExtension} attribute:
+
+\begin{itemize}
+\item {\tt id}
+\item {\tt functionDefinition}
+\item {\tt castExpr}
+\item {\tt gccAsmDefinition}
+\end{itemize}
+
+\subsubsection*{Example}
+
+The definition for "{\tt \_\_extension\_\_ typedef long long int64\_t}" corresponds to the following:
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+ <id type="long_long" sclass="typedef" is_gccExtension="1">
+   <name>int64_t</name>
+ </id>
+\end{XcodeMLExample}
+
+\subsection{ {\tt gccAsm}, {\tt gccAsmDefinition}, and {\tt gccAsmStatement} elements}
+
+The {\tt gccAsm, {\tt gccAsmDefinition}, and {\tt gccAsmStatement} elements define the GCC {\tt asm} and {\tt \_\_asm\_\_} keywords. The elements have the asm variable string as an element.
+
+\begin{itemize}
+\item {\tt gccAsm} - represents the {\tt asm} expression. This element has the subelement given below:
+  \begin{itemize}
+  \item {\tt stringConstant} (1 item) - represents assembly code,
+  \end{itemize}
+\item {\tt gccAsmDefinition} - represents the {\tt asm} definition, 
+  The subelements are the same as for {\tt gccAsm}.
+\item {\tt gccAsmStatement} - represents the {\tt asm} statement.
+  The element has the following attribute:
+  \begin{itemize}
+  \item {\tt is\_volatile} - indicates whether or not {\tt volatile} is specified; uses {\tt 0} or {\tt 1} for {\tt false} or {\tt true}, respectively.
+  \end{itemize}
+  The element has the following subelements:
+  \begin{itemize}
+  \item {\tt stringConstant} (1 item) - represents assembly code.
+  \item {\tt gccAsmOperands} (2 items) - The first item represents the output operand, while the second represents the input operand. If the operands are omitted, a tag that does not have a subelement is described. The subelement has {\tt gccAsmOperand} (multiple items) as a subelement.
+  \item {\tt gccAsmClobbers} (0 -1 item) - represents clobber values. 
+  The subelement has zero or more {\tt stringConstant} elements as subelements.
+  \item {\tt gccAsmOperand} - represents the input and output operands. 
+    The element has the following attributes: 
+    \begin{itemize}
+    \item {\tt match} (can be omitted)  - represents the identifier specified instead of the matching constraint (corresponds to "{\tt [identifier]}") and
+    \item {\tt constraint} (can be omitted)  - represents the {\tt constraint/constraint} modifier.
+    \end{itemize}
+    The element has the following subelement:
+    \begin{itemize}
+    \item Expression (1 item) - represents the expression that defines whether the element is input or output.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection*{Example}
+\vspace{2mm}
+
+\begin{CExample}
+  asm volatile (
+       "661:\n"
+       "\tmovl %0, %1\n662:\n"
+       ".section .altinstructions,\"a\"\n"
+       ".byte %c[feat]\n"
+       ".previous\n"
+       ".section .altinstr_replacement,\"ax\"\n"
+       "663:\n"
+       "\txchgl %0, %1\n"
+       : "=r" (v), "=m" (*addr)
+       : [feat] "i" (115), "0" (v), "m" (*addr));
+\end{CExample}
+\vspace{1mm}
+
+\begin{XcodeMLExample}
+   <gccAsmStatement is_volatile="1">
+     <stringConstant><![CDATA[661:\n\tmovl ...]]></stringConstant>
+     <gccAsmOperands>
+       <gccAsmOperand constraint="=r">
+         <Var>v</Var>
+       </gccAsmOperand>
+       <gccAsmOperand constraint="=m">
+         <pointerRef><Var>addr</Var></pointerRef>
+       </gccAsmOperand>
+     </gccAsmOperands>
+     <gccAsmOperands>
+       <gccAsmOperand match="feat" constraint="i">
+         <intConstant>115</intConstant>
+       </gccAsmOperand>
+       <gccAsmOperand constraint="m">
+         <pointerRef><Var>addr</Var></pointerRef>
+       </gccAsmOperand>
+     </gccAsmOperands>
+   </gccAsmStatement>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt gccAttributes} element}
+
+The {\tt gccAttributes} element defines the GCC {\tt \_\_attribute\_\_} keyword. The element has the {\tt \_\_attribute\_\_} argument character string. The {\tt gccAttributes} element has multiple {\tt gccAttribute} elements as subelements.
+
+\begin{itemize}
+\item Elements that represent a type all have the {\tt gccAttributes} element as a subelement (0 - 1 item).
+\item The id element has the {\tt gccAttributes} element as a subelement (0 - 1 item).
+\item The {\tt functionDefinition} element has the {\tt gccAttributes} element as a subelement (0 - 1 item).
+\end{itemize}
+
+\subsubsection*{Example}
+
+This example sets the {\tt gccAttributes} subelements for an element that represents a type.
+\vspace{2mm}
+
+\begin{CExample}
+  typedef __attribute__((aligned(8))) int ia8_t;
+  ia8_t __attribute__((aligned(16)) n;
+\end{CExample}
+\vspace{1mm}
+
+\begin{XcodeMLExample}
+ <typeTable>
+    <basicType type="B0" name="int" align="8" size="4"/>
+      <gccAttributes>
+        <attribute>aligned(8)</attribute>
+     </gccAttributes>
+    </basicType>
+    <basicType type="B1" name="int" align="16" size="4"/>
+     <gccAttributes>
+        <attribute>aligned(8)</attribute>
+        <attribute>aligned(16)</attribute>
+      </gccAttributes>
+   </basicType>
+  </typeTable>
+ <globalSymbols>
+   <id type="B0" sclass="typedef_name">
+      <name>ia8_t</name>
+    </id>
+   <id type="B1">
+      <name>n</name>
+    </id>
+  </globalSymbols>
+ <globalDeclarations>
+    <varDecl>
+      <name>n</name>
+    </varDecl>
+  </globalDeclarations>
+\end{XcodeMLExample}
+
+This example sets the {\tt gccAttributes} of the subelements (0 - 1 item) for the id element and the {\tt functionDefinition} element.
+\vspace{2mm} 
+
+\begin{CExample}
+ void func(void);
+ void func2(void) __attribute__(alias("func")); 
+  
+  void __attribute__((noreturn)) func() {
+     ...
+  }
+\end{CExample}
+\vspace{1mm} 
+ 
+\begin{XcodeMLExample}
+ <typeTable>
+   <functionType type="F0">
+     <params>
+        <name type="void"/>
+      </params>
+    </functionType>
+    <functionType type="F1">
+      <params>
+        <name type="void"/>
+      </params>
+    </functionType>
+  </typeTable>
+  <globalSymbols>
+    <id type="F0" sclass="extern_def">
+      <name>func</name>
+    </id>
+    <id type="F1" sclass="extern_def">
+      <name>func2</name>
+      <gccgccAttributes>
+        <gccAttribute>alias("func")</gccAttribute>
+      </gccgccAttributes>
+    </id>
+  </globalSymbols>
+  <globalDeclarations>
+    <functionDefinition>
+      <name>func</name>
+      <gccgccAttributes>
+        <gccAttribute>noreturn</gccAttribute>
+      </gccgccAttributes>
+      <body>...</body>
+    </functionDefinition>
+  </globalDeclarations>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt builtin\_op} element}
+
+The {\tt builtin\_op} element represents a call to an intrinsic compiler. The element has the following elements, each having values from 0 to multiple items. The order of the subelements must match the order of the function arguments.
+
+\begin{itemize}
+\item {\tt expression} - specifies the expression as an argument for the function that is called;
+\item {\tt typeName} - specifies the type name as an argument for the function that is called; and
+\item {\tt gccMemberDesignator} - specifies the structure or union member designator as an argument for the function that is called.
+The element has two attributes: ref, which indicates the structure or union derived data type name; and member, which indicates the member designator character string. The element has an expression for the array index (0 -1 item) and the {\tt gccMemberDesignator} element (0 -1 item) as subelements.
+\end{itemize}
+
+
+\subsection{ {\tt is\_gccSyntax} attribute}
+
+The {\tt is\_gccSyntax} attribute defines whether or not the expression, statement, or declaration corresponding to a tag uses the GCC extension. The value is {\tt 0} or {\tt 1} ({\tt false} or {\tt true}). This attribute can be omitted, in which case it is the same as assigning a 0 value.
+
+
+\subsection{ {\tt is\_modified} attribute}
+
+The {\tt is\_modified} attribute defines whether or not the expression, statement, or declaration corresponding to a tag is modified during compilation. The value is {\tt 0} or {\tt 1} ({\tt false} or {\tt true}). This attribute can be omitted, in which case it is the same as assigning a 0 value.
+The following elements can have the {\tt is\_gccSyntax} or {\tt is\_modified} attribute:
+
+\begin{itemize}
+\item {\tt varDecl},
+\item Statement elements, and
+\item Expression elements.
+\end{itemize}
+
+

@@ -1,0 +1,60 @@
+\section{Symbol list}
+
+\subsection{ {\tt id} element}
+
+The {\tt id} element defines the variable names, array names, function names, {\tt struct}/{\tt union} member names, function arguments, and compound statement local variable names. The {\tt id} element has the following attributes:
+
+\begin{itemize}
+\item {\tt sclass} - represents one of the storage classes: '{\tt auto}', '{\tt param}', '{\tt extern}', '{\tt extern\_def}', '{\tt static}', '{\tt register}', '{\tt label}', '{\tt tagname}', '{\tt moe}', or '{\tt typedef\_name}';
+\item {\tt type} - represents the identifier data type;
+\item {\tt bit\_field} attribute - specifies the member bit field in the {\tt structType} and {\tt unionType} elements;
+\item {\tt is\_gccThread} - specifies whether or not the GCC {\tt \_thread} keyword is defined using {\tt 0} or {\tt 1} ({\tt false} or {\tt true}); and
+\item {\tt is\_gccExtension} attribute.
+\end{itemize}
+
+The element has the following elements:
+
+\begin{itemize}
+\item {\tt name} element - specifies the names of identifiers,
+\item {\tt value} element - specifies the value corresponding to the identifier, and
+\item {\tt bitField} element - specifies the member bit field in the {\tt structType} and {\tt unionType} elements.
+\end{itemize}
+
+If the identifier is a variable, it has an element for the address. However, there is no need for the address element if the variable is created by the compiler.
+
+\subsubsection*{Example}
+
+The symbol table entry for the variable "{\tt xyz}" in "{\tt int xyz}" is as follows. It can be noted that {\tt P6e7e0} is the {\tt type\_id} for "{\tt int *}".
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <id sclass="extern_def" type="int"> 
+   <name>xyz</name>
+   <value>
+     <VarAddr type="P6e7e0">xyz</varAddr>
+   </value>
+  </id>
+\end{XcodeMLExample}
+
+The symbol table entry for the "{\tt foo}" function in "{\tt int foo()}" is as follows. It can be noted that {\tt F6f168} is the {\tt type\_id} corresponding to the "{\tt foo}" data type, and {\tt P6f1a8} is the {\tt type\_id} of the pointer to {\tt F6f168}. Furthermore, the {\tt foo} identifier becomes the pointer to the function.
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <id sclass="extern_def" type="0x6f168">
+   <name>foo</name>
+   <value>
+    <funcAddr type="0xfla8">foo</funcAddr>
+   </value>
+  </id>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt globalSymbols} element}
+
+Defines identifiers that have global scope. The element has {\tt id} elements for identifiers with global scope.
+
+\subsection{ {\tt symbols} element}
+
+The symbols element defines identifiers that have local scope. The element has {\tt id} elements that correspond to definition identifiers. 
+
+

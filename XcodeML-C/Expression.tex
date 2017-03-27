@@ -1,0 +1,249 @@
+\section{Expression element}
+
+This is an XML element that corresponds to the expression syntax element in the C language. Each element has a data type with a {\tt type} attribute associated with it that allows the data type information of the expression to be obtained.
+
+\subsection{Constant element}
+
+Constants can be expressed using the following elements:
+
+\begin{itemize}
+\item {\tt intConstant} element - specifies a constant that has an integer value;
+The element describes a decimal or hexadecimal (starting from 0) number.
+\item {\tt longlongConstant} element - specifies two 32-bit hexadecimal (starting at 0) numbers;
+\item {\tt floatConstant} element - specifies a constant that has a {\tt float}, {\tt double} or {\tt long double} value; 
+the element describes a floating-point literal.
+\item {\tt stringConstant} element - specifies a character string;
+the element has the attribute {\tt is\_wide="[1|0|true|false]"} ({\tt 0} if omitted). When {\tt is\_wide} is {\tt 1} or {\tt true}, the character string has the {\tt wchar\_t} data type.
+\item {\tt moeConstant} element - specifies an {\tt enum} type constant;
+the element describes an {\tt enum} constant.
+\item {\tt funcAddr} element - specifies the address to a function.
+The element describes the function name.
+\end{itemize}
+
+The constant data type is specified using the {\tt type} attribute.
+For {\tt moeConstant}, the {\tt moe} constant to be specified must be included in a symbol table that is within the scope of the expression.
+
+\subsection{Elements that reference variables}
+
+There is a different element for referencing each of the different types of variables: global variables, parameter variables, and local variables.
+
+\begin{itemize}
+\item {\tt var} element - expression to reference global variables.
+The element specifies a variable name.
+\item {\tt varAddr} element - expression to reference the address of a global variable.
+The element specifies a variable name.
+\item The scope attribute is used to differentiate local variables.
+\item {\tt scope} attribute - has the value "{\tt local}", "{\tt global}" or "{\tt param}".
+\end{itemize}
+\vspace{1mm}
+
+\begin{XcodeMLExample}
+<Var>var_name</Var> 
+\end{XcodeMLExample}
+
+is equivalent to
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+<PointerRef> <varAddr>var_name</varAddr></PointerRef>
+\end{XcodeMLExample}
+\vspace{1mm}
+
+\begin{XcodeMLExample}
+<varAddr>var_name</varAddr>
+\end{XcodeMLExample}
+
+and is written as {\tt \&var\_name} in the C language.
+
+
+\subsection{ {\tt pointerRef} element}
+
+The {\tt pointerRef} element is used to reference memory as an address expression for the subelement.
+
+
+\subsection{Elements for referencing array elements}
+
+The following elements are used for referencing arrays:
+
+\begin{itemize}
+\item {\tt arrayRef} - expression that references the address of the first element in the array. The element specifies an array name.
+\item {\tt arrayAddr} - expression that references the address of the array. The element specifies the array name.
+\end{itemize}
+
+To reference the array element, use {\tt arrayRef} to calculate the address, and use {\tt pointerRef} to access the element. 
+In the same way as for variable references, the scope attribute is used to differentiate local variables.
+
+
+\subsection{Element for referencing structure members}
+
+When referencing structure members, use {\tt memberAddr} for referencing the reference address, {\tt memberRef} for referencing the member, and {\tt memberArrayAddr} for referencing the member array address. 
+
+\begin{itemize}
+\item {\tt memberAddr} - references the address of a structure member;
+for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+\item {\tt memberRef} - references a structure member;
+for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+\item {\tt memberArrayAddr} - references the address of an array structure member;
+for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+\item {\tt memberArrayRef} - references an array structure member;
+for the content of the element, specify the expression for the structure member address, and specify the member name for the member attribute value. 
+\end{itemize}
+\vspace{1mm}
+
+\begin{XcodeMLExample}
+<memberRef memer="xxx">addr</memberRef>
+\end{XcodeMLExample}
+
+is equivalent to
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+<pointerRef >
+  <memberAddr memer="xxx">addr<memberAddr>
+</pointerRef>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt assignExpr} element}
+
+The {\tt assignExpr} element has two expressions as subelements and represents an assignment. The left expression (the first element) for the {\tt assignExpr} element must be an lvalue.
+
+
+\subsection{Binary operation elements}
+
+The following elements represent binary arithmetic operations. The operands are specified as the content of two elements. The left expression is the first element, and the right expression is the second element.
+
+\begin{itemize}
+\item {\tt plusExpr} - addition,
+\item {\tt minusExpr} - subtraction,
+\item {\tt mulExpr} - multiplication,
+\item {\tt divExpr} - division,
+\item {\tt modExpr} - remainder,
+\item {\tt LshiftExpr} - shift left,
+\item {\tt RshiftExpr} - shift right,
+\item {\tt bitAndExpr} - bit-wise logical product (AND),
+\item {\tt bitOrExpr} - bit-wise logical sum (OR), and
+\item {\tt bitXorExpr} - bit-wise exclusive OR (XOR).
+\end{itemize}
+
+Taking the above and combining them with the assignment expressions yields the following elements:
+
+\begin{itemize}
+\item {\tt asgPlusExpr} - addition,
+\item {\tt asgMinusExpr} - subtraction,
+\item {\tt asgMulExpr} - multiplication,
+\item {\tt asgDivExpr} - division,
+\item {\tt asgModExpr} - remainder,
+\item {\tt asgLshiftExpr} - shift left,
+\item {\tt asgRshiftExpr} - shift right,
+\item {\tt asgBitAndExpr} - bit-wise logical product (AND),
+\item {\tt asgBitOrExpr} - bit-wise logical sum (OR), and
+\item {\tt asgBitXorExpr} - bit-wise exclusive OR (XOR).
+\end{itemize}
+
+For the above assignment operations, the left expression (the first element) must be an lvalue.
+The following elements represent logical binary arithmetic operations. The operands are specified as the content of two elements.
+
+\begin{itemize}
+\item {\tt logEQExpr} - equivalence,
+\item {\tt logNEQExpr} - nonequivalence,
+\item {\tt logGEExpr} - greater than or equal to,
+\item {\tt logGTExpr} - greater than,
+\item {\tt logLEExpr} - less than or equal to,
+\item {\tt logLTExpr} - less than,
+\item {\tt logAndExpr} - logical product (AND), and
+\item {\tt logOrExpr} - logical sum (OR).
+\end{itemize}
+
+
+\subsection{Unary operation elements}
+
+The following elements represent unary arithmetic operations. The operand is specified as the content of an element.
+
+\begin{itemize}
+\item {\tt unaryMinusExpr} - negation
+\item {\tt bitNotExpr} - bit-wise negation (inversion)
+\end{itemize}
+
+The following element represents a logical unary arithmetic operation. The operand is specified as the content of an element.
+
+\begin{itemize}
+\item {\tt logNotExpr} - logical negation (NOT)
+\end{itemize}
+
+The following elements represent the sizeof operator and the GCC extension operator:
+
+\begin{itemize}
+\item {\tt sizeOfExpr} - {\tt sizeof} operator; 
+specifies an expression or the {\tt typeName} element as a subelement.
+\item {\tt gccAlignOfExpr} - represents the GCC {\tt \_alignof\_} operator;
+specifies an expression or the {\tt typeName} element as a subelement.
+\item {\tt gccLabelAddr} - represents the GCC {\tt \&\&} unary operator;
+specifies the label name.
+\end{itemize}
+
+
+\subsection{ {\tt functionCall} element}
+
+The {\tt functionCall} element represents a function call. The element has the following two elements:
+
+\begin{itemize}
+\item {\tt function} element - specifies the address for the function that is called, and
+\item {\tt arguments} element - specifies the arguments for the expression.
+\end{itemize}
+
+
+\subsection{ {\tt commaExpr} element}
+
+The {\tt commaExpr} element represents the comma expression (evaluated in sequence and returning the expression for the last element).
+
+
+\subsection{ {\tt postIncrExpr}, {\tt postDecrExpr}, {\tt preIncrExpr}, and {\tt preDecrExpr} elements}
+
+The {\tt postIncrExpr} and {\tt postDecrExpr} elements represent the postincrement and postdecrement expressions in the C language. The content must be an lvalue. The {\tt preIncrExpr} and {\tt preDecrExpr} elements represent the pre-increment and predecrement expressions in the C language. The content must be an lvalue.
+
+
+\subsection{ {\tt castExpr} element}
+
+The {\tt castExpr} element represents a type conversion (cast) expression or a compound literal. 
+
+The element has the following attributes:
+
+\begin{itemize}
+\item {\tt type} attribute - specifies the type of the expression after conversion and
+\item {\tt is\_gccExtension} attribute.
+\end{itemize}
+
+The element has the following subelement:
+
+\begin{itemize}
+\item {\tt value} - represents the literal portion of the compound literal.
+\end{itemize}
+
+
+\subsection{ {\tt condExpr} element}
+
+The {\tt condExpr} element corresponds to the ternary operator. 
+
+The element has three expressions as subelements, as shown in the example below.
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+  <condExpr>
+    (expression)
+    (expression)
+    (expression)
+  </condExpr>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt gccCompoundExpr} element}
+
+This element corresponds to the GCC extension compound expression. 
+The element has the {\tt compoundStatement} element.
+
+\begin{itemize}
+\item {\tt compoundStatement} element - specifies the content of the compound expression
+\end{itemize}
+
+

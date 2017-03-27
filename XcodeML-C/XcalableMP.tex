@@ -1,0 +1,66 @@
+\section{XcalableMP element}
+
+\subsection{ {\tt coArrayType} element}
+
+Represents a co-array type declared by "{\tt \#pragma xmp coarray}". This element has the following attributes:
+
+\begin{itemize}
+\item {\tt type} - derived data type name,
+\item {\tt element\_type} - co-array element data type name, and
+represents a co-array type of two or more dimensions when the type corresponding to the data type name is {\tt coArrayType}.
+\item {\tt array\_size} - represents the co-array dimension.
+\end{itemize}
+
+This element has the following subelement:
+
+\begin{itemize}
+\item {\tt arraySize} - represents the co-array dimension.
+When there is an {\tt arraySize} element, the {\tt array\_size} attribute value should be "{\tt *}". 
+\end{itemize}
+
+\subsubsection*{Example}
+\vspace{1mm}
+
+\begin{CExample}
+int A[10];
+#pragma xmp coarray [*][2]::A
+\end{CExample}
+
+The element that represents the type for variable {\tt A} above is {\tt coArrayType} {\tt C2} given below.
+\vspace{2mm}
+
+\begin{XcodeMLExample}
+<arrayType type="A1" element_type="int" array_size="10"/>
+<coArrayType type="C1" element_type="A1"/>
+<coArrayType type="C2" element_type="C1" array_size="2"/>
+\end{XcodeMLExample}
+
+
+\subsection{ {\tt coArrayRef} element}
+
+The element represents a reference to a co-array type variable.
+This element has the following subelements:
+
+\begin{itemize}
+\item First expression - represents the co-array variable expression and
+\item Second expression - represents the expression for the co-array dimension. 
+Specify more than one expression if there are multiple dimensions. 
+\end{itemize}
+
+
+\subsection{ {\tt subArrayRef} element}
+
+Represents a reference to a subarray. 
+This element has the following subelements. Subelements cannot be omitted.
+
+\begin{itemize}
+\item The first element has the expression that represents the array.
+\item {\tt lowerBound} - represents the lower limit of the index. 
+This subelement has an expression element.
+\item {\tt upperBound} - represents the upper limit of the index.
+This subelement has an expression element.
+\item {\tt step} - represents the step size for the index. 
+This subelement has an expression element.
+\end{itemize}
+
+
