@@ -1,9 +1,7 @@
-.PHONY: all pdf clean
+.PHONY: all clean
 TEXS=ack.tex DefsDecls.tex Expression.tex history.tex intro.tex macro.tex main.tex Statement.tex SymbolList.tex TypeTable.tex XcodeProgram.tex XcalableMP.tex Others.tex Codes.tex
 
-all: main.dvi
-
-pdf: main.pdf
+all: main.pdf
 
 main.pdf: main.dvi
 	dvipdfmx main
