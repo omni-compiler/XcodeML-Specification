@@ -50,7 +50,7 @@ The {\tt coShape} element defines a coshape of a coarray.
 
 \subsection{ {\tt FbasicType} element}
 
-The {\tt FbasicType} element defines a reference to prmitive types or other type definition elements.
+The {\tt FbasicType} element defines a reference to primitive types or other type definition elements.
 
 %\subsubsection*{Contents model}
 %{\tt
@@ -240,6 +240,10 @@ If the value is '{\tt Fvoid}', the type element is the subroutine, otherwise the
 {\tt 0}(or {\tt false}) is specifies if the type element is the function or subroutine depending on the type of the {\tt return\_type} attribute.}{O}
 \XcodeMLAttrDef{is\_internal}{bool}
 {Specifies if the type element is an internal subprogram.}{O}
+\XcodeMLAttrDef{is\_elemental}{text}
+{Specifies if the type element has the {\tt elemental} attribute.}{O}
+\XcodeMLAttrDef{is\_pure}{text}
+{Specifies if the type element has the {\tt pure} attribute.}{O}
 \XcodeMLAttrDef{bind}{text}
 {Specifies the kind if the type has the {\tt bind} attribute. Only '{\tt C}' is available currently.}{O}
 \XcodeMLAttrDef{bind\_name}{text}
@@ -615,5 +619,3 @@ The {\tt FenumType} element defines a enumeration data type.
 \XcodeMLAttrDef{-}{-}
 {-}{-}
 \end{XcodeMLAttributes}
-
-

@@ -1,12 +1,12 @@
 \section{Miscellaneous}
 
-\subsection{Intrinsic procesures}
+\subsection{Intrinsic procedures}
 
-Intrinsic procesures are treated as external functions or subroutines
+Intrinsic procedures are treated as external functions or subroutines
 without {\tt extern} declaration.
 
 
-\subsection{Treatment of comemts and pragmas}
+\subsection{Treatment of comments and pragmas}
 
 There is no element which represents comments. However, the pragma elements for the directives
 of OpenMP 3.0 are kept by the {\tt FpragmaStatement} elements.
@@ -15,7 +15,7 @@ of OpenMP 3.0 are kept by the {\tt FpragmaStatement} elements.
 \subsection{Canonicalization}
 
 In this specification of XcodeML/Fortran, codes are assumed to be altered in the actual
-conversion proccess by the frontend within the range where the meanings of the codes are not changed.
+conversion process by the frontend within the range where the meanings of the codes are not changed.
 The alterations are made as follows:
 
 \begin{itemize}
@@ -23,7 +23,7 @@ The alterations are made as follows:
 \item The {\tt parameter} statement, the {\tt dimension} statement, the {\tt allocatable} statement,
 the {\tt pointer} statement, the {\tt target} statement, the {\tt intent} statement and the {\tt save} statement
 saving a variable are unified into a type declaration of the variable.
-\item The {\tt parameter} variable initialized by a constant is replaced by the constatnt.
+\item The {\tt parameter} variable initialized by a constant is replaced by the constant.
 \item The {\tt statement function} is inlined.
 \item The unary operator '{\tt +}' is omitted.
 \item Any comments other than the directives of OpenMP 3.0 are removed.
@@ -33,7 +33,7 @@ Accordingly, some Fortran 90 syntax elements such as the {\tt statement function
 
 \subsection{Restrictions}
 
-This specification of XcodeML/Fortran does not support the following Fortran 90 syntaxes because they do not appear in both of NBP and SPEC benchmarks.
+This specification of XcodeML/Fortran does not support the following Fortran 90 syntax because they do not appear in both of NBP and SPEC benchmarks.
 
 \begin{itemize}
 \item The {\tt block data} statement, the {\tt end block data} statement.
@@ -44,7 +44,7 @@ This specification of XcodeML/Fortran does not support the following Fortran 90 
 On the other hand, the following 6 items from the obsolescent features in Fortran 90 are not supported.
 
 \begin{itemize}
-\item The {\tt do} variable and the expressions of type default real or double precision real, and the shared do-loop terminataion.
+\item The {\tt do} variable and the expressions of type default real or double precision real, and the shared do-loop termination.
 \item The {\tt assign} statement, the {\tt assigned go to} statement and the {\tt assigned format}.
 \item Branching to an {\tt end if} statement.
 \item The alternate {\tt return} and the {\tt alternate return} statement.
