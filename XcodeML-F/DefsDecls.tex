@@ -306,13 +306,13 @@ The {\tt FfunctionDecl} element represents a {\tt function} or {\tt subroutine} 
 %{\tt
 %(name, params?, declarations?)
 %}
-\XcodeMLContentsModel{ (name, params?, declarations?) }
+\XcodeMLContentsModel{ (name, symbols?, declarations?) }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{name}
 {Specifies the name of the function or the subroutine.}{R}
-\XcodeMLElementDef{params}
-{Specifies the dummy arguments.}{O}
+\XcodeMLElementDef{symbols}
+{Specifies the symbols included in the element.}{O}
 \XcodeMLElementDef{declarations}
 {Specifies the definitions and declarations in the element.}{O}
 \end{XcodeMLChildElements}
