@@ -27,15 +27,20 @@ The {\tt kind} element represents a {\tt kind} parameter of the type.
 The {\tt id} element represents an identifier of the name of the variable, array,
 structure component, dummy argument of the function or subroutine, etc.
 
-%\subsubsection*{Contents model}
-%{\tt
-%(name)
-%}
-\XcodeMLContentsModel{ (name) }
+% \XcodeMLContentsModel{ (name) }
+
+% \begin{XcodeMLChildElements}
+% \XcodeMLElementDef{name}
+% {Specifies the name of the identifier(the name of the variable if the identifier corresponds to a variable etc.).}{R}
+% \end{XcodeMLChildElements}
+
+\XcodeMLContentsModel{ (name, value?) }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{name}
 {Specifies the name of the identifier(the name of the variable if the identifier corresponds to a variable etc.).}{R}
+\XcodeMLElementDef{value}
+{Specifies the value of the identifier if it corresponds to an enumerator.}{O}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}

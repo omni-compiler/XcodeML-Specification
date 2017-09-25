@@ -602,17 +602,20 @@ The {\tt binding} element represents a procedure list to bind.
 
 The {\tt FenumType} element defines a enumeration data type.
 
-%\subsubsection*{Contents model}
-%{\tt
-%((name, value?)+)
-%}
-\XcodeMLContentsModel{ ((name, value?)+) }
+% \XcodeMLContentsModel{ ((name, value?)+) }
+
+% \begin{XcodeMLChildElements}
+% \XcodeMLElementDef{name}
+% {Specifies the name of the enumerator.}{R}
+% \XcodeMLElementDef{value}
+% {Specifies the value of the enumerator.}{O}
+% \end{XcodeMLChildElements}
+
+\XcodeMLContentsModel{ (symbols) }
 
 \begin{XcodeMLChildElements}
-\XcodeMLElementDef{name}
-{Specifies the name of the enumerator.}{R}
-\XcodeMLElementDef{value}
-{Specifies the value of the enumerator.}{O}
+\XcodeMLElementDef{symbols}
+{Specifies the enumerators.}{R}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
