@@ -209,8 +209,6 @@ The {\tt FmemberRef} element represents a reference to a structure component.
  Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
 \XcodeMLAttrDef{member}{text}
 {Specifies the name of the component.}{R}
-\XcodeMLAttrDef{is\_complex\_part}{bool}
-{{\tt true} if refering to the {\tt complex} type partially. In this case, the member name(the value of the {\tt member} attribute) is either "{\tt RE}" or "{\tt IM}".}{O}
 \end{XcodeMLAttributes}
 
 
@@ -306,19 +304,22 @@ The {\tt varRef} element represents a reference to a variable.
 %{\tt
 %(Var | FmemberRef | FarrayRef | FcharacterRef | FcoArrayRef)
 %}
-\XcodeMLContentsModel{ (Var | FmemberRef | FarrayRef | FcharacterRef | FcoArrayRef) }
+\XcodeMLContentsModel{ (Var | FmemberRef | FarrayRef | FcharacterRef |
+FcoArrayRef | FcomplexPartRef) }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{Var}
-{Specifid if the element references the variable.}{R}
+{Specified if the element references a variable.}{R}
 \XcodeMLElementDef{FmemberRef}
-{Specifid if the element references the structure component.}{R}
+{Specified if the element references a structure component.}{R}
 \XcodeMLElementDef{FarrayRef}
-{Specifid if the element references the array section of the array.}{R}
+{Specified if the element references an array section.}{R}
 \XcodeMLElementDef{FcharacterRef}
-{Specifid if the element references the character substring of the character string.}{R}
+{Specified if the element references a character substring.}{R}
 \XcodeMLElementDef{FcoArrayRef}
-{Specifid if the element references the coarray.}{R}
+{Specified if the element references a coarray.}{R}
+\XcodeMLElementDef{FcomplexPartRef}
+{Specified if the element references a complex part.}{R}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
@@ -327,6 +328,27 @@ The {\tt varRef} element represents a reference to a variable.
  Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
 \end{XcodeMLAttributes}
 
+
+\subsubsection{ {\tt FcomplexPartRef} element}
+
+The {\tt FcomplexPartRef} element represents the real or imaginary part
+of a complex variable.
+
+\XcodeMLContentsModel{ (varRef) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{varRef}
+{Specifies the reference to a complex variable.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type name identifier in XcodeML/Fortran.
+ Refer to "\ref{sec:Thedatatypenameidentifier} The data type name identifier".}{O}
+\XcodeMLAttrDef{part}{text}
+{Either of "{\tt RE}" or "{\tt IM}", representing the real or imaginary
+  part of the variable, respectively.}{R}
+\end{XcodeMLAttributes}
 
 \subsection{Function call}
 
