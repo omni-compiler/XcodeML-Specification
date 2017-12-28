@@ -173,12 +173,12 @@ The data type definition for "{\tt type(s(selected\_int\_kind(10),100, :))}" is 
 <typeParamValues>
   <functionCall type="Fint" is_intrinsic="true">
     <name>selected_real_kind</name>
-  <arguments>
+    <arguments>
        <FintConstant type="Fint">10</FintConstant>
     </arguments>
   </functionCall>
-    <FintConstant type="Fint">100</FintConstant>
-	<len></len>
+  <FintConstant type="Fint">100</FintConstant>
+  <len></len>
   <typeParamValues>
 </FbasicType>
 \end{XcodeMLFExample}
@@ -448,7 +448,7 @@ The {\tt typeParamValues} element defines type parameter values.
 
 %\subsubsection*{Contents model}
 %{\tt
-%((exprModel | len)+)
+%((exprModel | namedValue | len)+)
 %}
 \XcodeMLContentsModel{ ((exprModel | namedValue | len)+) }
 
