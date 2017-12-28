@@ -450,11 +450,13 @@ The {\tt typeParamValues} element defines type parameter values.
 %{\tt
 %((exprModel | len)+)
 %}
-\XcodeMLContentsModel{ ((exprModel | len)+) }
+\XcodeMLContentsModel{ ((exprModel | namedValue | len)+) }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{exprModel}
 {Specifies the value of the type parameter.}{O}
+\XcodeMLElementDef{exprModel}
+{Specifies the value of the type parameter with the coressponding keyword.}{O}
 \XcodeMLElementDef{len}
 {Specifies the value of the type parameter if the value is assumed('{\tt *}') or deferred('{\tt :}').}{O}
 \end{XcodeMLChildElements}
