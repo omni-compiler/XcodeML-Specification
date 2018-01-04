@@ -384,3 +384,29 @@ The {\tt FenumDecl} element represents an {\tt enum} statement.
 \XcodeMLAttrDef{common attributes}{-}
 {Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
 \end{XcodeMLAttributes}
+
+\subsection{ {\tt FmoduleProcedureDefinition} element}
+
+TODO
+The {\tt FmoduleProcedureDefinition} element represents a separate module procedure.
+
+\XcodeMLContentsModel{ (name, symbols?, params?, declarations?, body) }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{name}
+{Specifies the name of  the separate module procedure.}{R}
+\XcodeMLElementDef{symbols}
+{Specifies the symbols included in the element.}{O}
+\XcodeMLElementDef{params}
+{Specifies the dummy arguments.}{O}
+\XcodeMLElementDef{declarations}
+{Specifies the definitions and declarations included in the element.}{O}
+\XcodeMLElementDef{body}
+{Specifies the executable statemtents included in the element.}{R}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attributes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\end{XcodeMLAttributes}
+
