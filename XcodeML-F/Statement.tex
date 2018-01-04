@@ -393,6 +393,32 @@ The {\tt FstopStatement} element represents a {\tt stop} statement.
 \end{XcodeMLAttributes}
 
 
+\subsection{ {\tt FerrorStopStatement} element}
+
+The {\tt FerrorStopStatement} element represents a {\tt error stop} statement.
+
+%\subsubsection*{Contents model}
+%{\tt
+%empty
+%}
+\XcodeMLContentsModel{ empty }
+
+\begin{XcodeMLChildElements}
+\XcodeMLElementDef{-}
+{-}{-}
+\end{XcodeMLChildElements}
+
+\begin{XcodeMLAttributes}
+\XcodeMLAttrDef{common attributes}{-}
+{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
+\XcodeMLAttrDef{code}{text}
+{Specifies a stop code consisting of a string of up to five digits.}{O}
+\XcodeMLAttrDef{message}{text}
+{Specifies a stop code consisting of a default character constant.
+ Neglected if the code attribute is specified.}{O}
+\end{XcodeMLAttributes}
+
+
 \subsection{Input/Output element}
 
 \subsubsection{ {\tt FreadStatement, FwriteStatement} element}
