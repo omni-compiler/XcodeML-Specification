@@ -31,7 +31,7 @@ The {\tt declarations} element is the element to declare variables etc. in the p
 %{\tt
 %(varDecl | FstructDecl | externDecl | FuseDecl | FuseOnlyDecl | FinterfaceDecl | FnamelistDecl | FequivalenceDecl | FcommonDecl)*
 %}
-\XcodeMLContentsModel{ (varDecl | FstructDecl | externDecl | FuseDecl | FuseOnlyDecl | FinterfaceDecl | FnamelistDecl | FequivalenceDecl | FcommonDecl | FprocedureDecl | FimportDecl)* }
+\XcodeMLContentsModel{ (varDecl | FstructDecl | externDecl | FuseDecl | FuseOnlyDecl | FinterfaceDecl | FnamelistDecl | FequivalenceDecl | FcommonDecl | FimportDecl)* }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{varDecl}
@@ -52,8 +52,6 @@ The {\tt declarations} element is the element to declare variables etc. in the p
 {the Fortran 90 {\tt equivalence} statement}{O}
 \XcodeMLElementDef{FcommonDecl}
 {the Fortran 90 {\tt common} statement}{O}
-\XcodeMLElementDef{FprocedureDecl}
-{the Fortran 2003 {\tt procedure} statement}{O}
 \XcodeMLElementDef{FimportDecl}
 {the Fortran 2003 {\tt import}  statement}{O}
 \end{XcodeMLChildElements}
@@ -315,29 +313,6 @@ The {\tt FfunctionDecl} element represents a {\tt function} or {\tt subroutine} 
 {Specifies the symbols included in the element.}{O}
 \XcodeMLElementDef{declarations}
 {Specifies the definitions and declarations in the element.}{O}
-\end{XcodeMLChildElements}
-
-\begin{XcodeMLAttributes}
-\XcodeMLAttrDef{common attributes}{-}
-{Refer to "\ref{sec:Commonattributesofdefinition} Common attributes of the definition / declaration / statement element".}{-}
-\end{XcodeMLAttributes}
-
-
-\subsection{ {\tt FprocedureDecl} element}
-
-The {\tt FprocedureDecl} element represents a {\tt procedure} statement.
-
-%\subsubsection*{Contents model}
-%{\tt
-%(name, value?)
-%}
-\XcodeMLContentsModel{ (name, value?) }
-
-\begin{XcodeMLChildElements}
-\XcodeMLElementDef{name}
-{Specifies the name of the procedure.}{R}
-\XcodeMLElementDef{value}
-{Specifies the initial value if present.}{O}
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
