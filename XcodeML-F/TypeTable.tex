@@ -8,7 +8,7 @@ The {\tt typeTable} element defines the data type information for the entire fil
 %{\tt
 %(FbasicType | FfunctionType | FstructType | FenumType))*
 %}
-\XcodeMLContentsModel{ (FbasicType | FfunctionType | FstructType | FenumType))* }
+\XcodeMLContentsModel{ (FbasicType | FfunctionType | FstructType | FenumType)* }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{FbasicType}
@@ -173,12 +173,12 @@ The data type definition for "{\tt type(s(selected\_int\_kind(10),100, :))}" is 
 <typeParamValues>
   <functionCall type="Fint" is_intrinsic="true">
     <name>selected_real_kind</name>
-  <arguments>
+    <arguments>
        <FintConstant type="Fint">10</FintConstant>
     </arguments>
   </functionCall>
-    <FintConstant type="Fint">100</FintConstant>
-	<len></len>
+  <FintConstant type="Fint">100</FintConstant>
+  <len></len>
   <typeParamValues>
 </FbasicType>
 \end{XcodeMLFExample}
@@ -204,7 +204,7 @@ The data type definition for "{\tt integer,bind(c,name="cname")}" is as follows:
 \vspace{2mm}
 
 \begin{XcodeMLFExample}
-<FbasicType type="TYPE_NAME" ref="Fint" is_bind="C" bind_name="cname">
+<FbasicType type="TYPE_NAME" ref="Fint" bind="C" bind_name="cname">
 </FbasicType>
 \end{XcodeMLFExample}
 
@@ -248,6 +248,10 @@ If the value is '{\tt Fvoid}', the type element is the subroutine, otherwise the
 {Specifies the kind if the type has the {\tt bind} attribute. Only '{\tt C}' is available currently.}{O}
 \XcodeMLAttrDef{bind\_name}{text}
 {Specifies if the bind name.}{O}
+\XcodeMLAttrDef{is\_module}{text}
+{Specifies if the type element has the {\tt module} attribute.}{O}
+%% \XcodeMLAttrDef{is\_defined}{text}
+%% {Specifies if the type element has already defined (for .xsmod only).}{O}
 \end{XcodeMLAttributes}
 
 
@@ -448,13 +452,15 @@ The {\tt typeParamValues} element defines type parameter values.
 
 %\subsubsection*{Contents model}
 %{\tt
-%((exprModel | len)+)
+%((exprModel | namedValue | len)+)
 %}
-\XcodeMLContentsModel{ ((exprModel | len)+) }
+\XcodeMLContentsModel{ ((exprModel | namedValue | len)+) }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{exprModel}
 {Specifies the value of the type parameter.}{O}
+\XcodeMLElementDef{namedValue}
+{Specifies the value of the type parameter with the corresponding keyword.}{O}
 \XcodeMLElementDef{len}
 {Specifies the value of the type parameter if the value is assumed('{\tt *}') or deferred('{\tt :}').}{O}
 \end{XcodeMLChildElements}
@@ -473,7 +479,7 @@ The {\tt typeBoundProcedures} element defines type-bound procedures.
 %{\tt
 %((typeBoundprocedure|typeBoundGenericProcedure|finalProcedure)+)
 %}
-\XcodeMLContentsModel{ ((typeBoundprocedure|typeBoundGenericProcedure|finalProcedure)+) }
+\XcodeMLContentsModel{ ((typeBoundProcedure|typeBoundGenericProcedure|finalProcedure)+) }
 
 \begin{XcodeMLChildElements}
 \XcodeMLElementDef{typeBoundProcedure}
@@ -508,6 +514,8 @@ The {\tt typeBoundProcedure} element defines each type-bound procedure.
 \end{XcodeMLChildElements}
 
 \begin{XcodeMLAttributes}
+\XcodeMLAttrDef{type}{text}
+{Specifies the type identifier of the type bound procedure.}{0}
 \XcodeMLAttrDef{pass}{text}
 {"{\tt nopass}" or "{\tt pass}" if the {\tt pass} attribute is specfied.}{O}
 \XcodeMLAttrDef{pass\_arg\_name}{text}
